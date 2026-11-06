@@ -1,0 +1,1720 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>SOP Odoo V19 — từng bước có ảnh</title>
+<style>
+:root{--bg:#f6f7f5;--card:#fff;--ink:#1d2a26;--mut:#5b6b66;--line:#d9dfdb;--brand:#003E2D;--acc:#0C769E;
+--ok:#1a7f4b;--inf:#8a5a00;--k:#0C769E;--t:#5a3e9b;--n:#7a8a85;--x:#1d2a26;--box:rgba(12,118,158,.09)}
+@media (prefers-color-scheme:dark){:root{--bg:#121917;--card:#1b2420;--ink:#e6eeea;--mut:#9db0a9;--line:#2f3d37;--brand:#7fd1b4;--acc:#6cc3e3;
+--ok:#6fd49c;--inf:#e0b25a;--k:#6cc3e3;--t:#b79cf0;--n:#9db0a9;--x:#e6eeea;--box:rgba(108,195,227,.12)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px}
+h1{margin:0;font-size:1.15rem;color:var(--brand)}
+.nav{display:flex;gap:6px;margin:6px 0 8px;flex-wrap:wrap}
+.nav a{padding:5px 12px;border:1px solid var(--line);border-radius:99px;color:var(--ink);text-decoration:none;font-size:.9rem}
+.nav a.cur{background:var(--brand);color:var(--bg);border-color:var(--brand)}
+.sub2{color:var(--mut);font-size:.85rem;margin:2px 0 8px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bar input,.bar select,.bar button{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.bar input{flex:1 1 220px;min-width:160px}
+.bar select{flex:1 1 150px;min-width:0;max-width:100%;text-overflow:ellipsis}
+.bar .on{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)}
+@media (max-width:700px){header{position:static}}
+main{max-width:900px;margin:0 auto;padding:14px 16px 60px}
+.legendbox{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:.9rem}
+.legendbox p{margin:6px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+.chip{padding:3px 10px;border-radius:99px;border:1.5px solid currentColor;font-size:.82rem;font-weight:600;white-space:nowrap}
+.chip.k{color:var(--k)}.chip.t{color:var(--t)}.chip.n{color:var(--n);border-style:dashed}.chip.x{color:var(--x);border-color:var(--line)}
+.arrow{color:var(--mut)}
+.cat{margin:22px 0 8px;font-size:1.05rem;color:var(--brand)}
+details.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;overflow:hidden}
+details.card>summary{cursor:pointer;padding:10px 14px;font-weight:600;list-style:none;display:flex;gap:8px;align-items:flex-start}
+details.card>summary::-webkit-details-marker{display:none}
+details.card>summary::before{content:"▸";color:var(--mut)}
+details.card[open]>summary::before{content:"▾"}
+.tag{flex:none;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid currentColor;margin-top:2px}
+.tag.ok{color:var(--ok)}.tag.inf{color:var(--inf)}
+.in{padding:4px 14px 14px;border-top:1px solid var(--line)}
+.meta p{margin:.35em 0}
+.meta b{color:var(--brand)}
+h4{margin:16px 0 4px;font-size:.95rem;color:var(--brand)}
+ol.steps{list-style:none;counter-reset:s;margin:6px 0;padding:0}
+ol.steps>li{counter-increment:s;position:relative;padding:8px 0 8px 40px;border-top:1px dashed var(--line)}
+ol.steps>li:first-child{border-top:0}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:var(--brand);color:var(--bg);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.see{margin-top:4px;color:var(--mut);font-size:.92rem;padding-left:10px;border-left:3px solid var(--line)}
+figure{margin:8px 0 2px;padding:0}
+figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff;display:block}
+figcaption{font-size:.8rem;color:var(--mut);margin-top:3px}
+ul.pl{margin:4px 0;padding-left:20px}
+.vd{background:var(--box);border-left:3px solid var(--acc);padding:6px 10px;border-radius:4px;margin:10px 0}
+.src{font-size:.84rem;color:var(--mut)}
+.src a{color:var(--acc);word-break:break-all}
+.hide{display:none}
+.empty{color:var(--mut);text-align:center;padding:30px}
+@media print{header{position:static}details.card{break-inside:avoid}details.card:not([open])>*:not(summary){display:block}}
+</style>
+</head>
+<body>
+<header>
+  <h1>SOP Odoo V19 — từng bước, có ảnh</h1>
+  <nav class="nav"><a href="index.html">Thẻ tra nhanh</a><a href="sop.html" class="cur">SOP từng bước</a></nav>
+  <div class="sub2" id="count"></div>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Tìm (VD: nhận hàng, WIP, landed cost…)" aria-label="Tìm">
+    <select id="grp" aria-label="Nhóm"><option value="all">Tất cả nhóm</option></select>
+    <button id="fold" type="button">Thu gọn tất cả</button>
+    <button id="unfold" type="button">Mở tất cả</button>
+  </div>
+</header>
+<main>
+  <div class="legendbox" id="legend"></div>
+  <div id="list"></div>
+</main>
+<script>
+window.SOP_DATA = {
+ "groups": {
+  "a": "A · Cài đặt (người có quyền cấu hình)",
+  "b": "B · Vận hành kho",
+  "c": "C · Sản xuất",
+  "d": "D · Kế toán & giá thành",
+  "e": "E · Rà soát để báo lại"
+ },
+ "flow_legend": {
+  "k": "Kho cập nhật giá trị",
+  "t": "Kế toán ghi bút toán",
+  "n": "Không ghi gì",
+  "x": "Thao tác của người làm"
+ },
+ "images": {
+  "wh_settings": "Form kho: Incoming/Outgoing Shipments một bước",
+  "mfg_type": "Form kho: ô Manufacture (1/2/3 bước)",
+  "bom_wo_setting": "Manufacturing Settings: bật Work Orders",
+  "byp_setting": "Manufacturing Settings: bật By-Products",
+  "lc_enable": "Inventory Settings: bật Landed Costs và Default Journal",
+  "po_new": "Phiếu đề nghị mua (RfQ) đã điền",
+  "po_receipt_btn": "Nút Receipt trên đơn mua đã xác nhận",
+  "receipt_done": "Phiếu nhận hàng ở trạng thái Done",
+  "so_new": "Báo giá bán hàng đã điền",
+  "so_delivery_btn": "Nút Delivery trên đơn bán đã xác nhận",
+  "delivery_done": "Phiếu giao hàng ở trạng thái Done",
+  "cnt_page": "Trang Physical Inventory",
+  "cnt_diff": "Cột Difference trên Physical Inventory",
+  "cnt_apply": "Cửa sổ Apply: Inventory Reason và Counting Date",
+  "cnt_hist": "Lịch sử điều chỉnh tồn kho",
+  "val_stock": "Báo cáo Stock: tồn kho và giá trị",
+  "val_total": "Total Value: các lô nhập còn tồn",
+  "lc_product": "Sản phẩm chi phí: Is a Landed Cost, Default Split Method",
+  "lc_check": "Vendor bill: cột Landed Costs",
+  "lc_create": "Nút Create Landed Costs trên vendor bill",
+  "lc_transfers": "Form Landed Cost: chọn Transfers",
+  "lc_journal": "Bút toán landed cost",
+  "bom_btn": "Nút Bill of Materials trên form sản phẩm",
+  "bom_comp": "BoM: tab Components",
+  "bom_ops": "BoM: tab Operations",
+  "bom_create_op": "Cửa sổ Create Operations",
+  "bom_misc": "BoM: tab Miscellaneous",
+  "wc_general": "Work center: tab General Information",
+  "mo_start": "Lệnh sản xuất: nút Start của công đoạn",
+  "mo_done": "Lệnh sản xuất: nút Done của công đoạn",
+  "mo_ov_before": "MO Overview trước khi sản xuất",
+  "mo_ov_during": "MO Overview trong khi sản xuất",
+  "mo_ov": "MO Overview: MO Cost và Real Cost",
+  "wip_consumed": "Tab Components: cột Consumed",
+  "wip_duration": "Tab Work Orders: cột Real Duration",
+  "wip_cost": "MO Overview: Real Cost của phần đã làm",
+  "scrap_cog": "Lệnh sản xuất: menu bánh răng, mục Scrap",
+  "scrap_win": "Cửa sổ Scrap Products",
+  "scrap_loc": "Địa điểm Scrap: Inventory Loss và Loss Account",
+  "scrap_pl": "Scrap trong General Ledger / Profit and Loss",
+  "byp_tab": "BoM: tab By-products",
+  "byp_moves": "Product Moves của lệnh có sản phẩm phụ",
+  "val_acc": "Báo cáo Inventory Valuation (Accounting → Review)",
+  "val_accrual": "Báo cáo dồn tích: Create Accrual Entries"
+ },
+ "sops": [
+  {
+   "id": "A1",
+   "group": "a",
+   "lv": "ok",
+   "title": "Cấu hình kho: nhận/giao hàng một bước, số bước sản xuất",
+   "who": "Người có quyền cấu hình kho. Người dùng nghiệp vụ chỉ cần biết kho đang đặt kiểu nào.",
+   "when": "Khi dựng kho mới, hoặc khi cần kiểm kho hiện hành đang để 1 bước hay nhiều bước.",
+   "before": [
+    "App Inventory đã cài. Có ít nhất một kho."
+   ],
+   "flow": [
+    [
+     "Bật Multi-Step Routes",
+     "x"
+    ],
+    [
+     "Chọn kho",
+     "x"
+    ],
+    [
+     "Chọn kiểu nhận/giao",
+     "x"
+    ],
+    [
+     "Chọn kiểu Manufacture",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Inventory → Configuration → Settings, mục Warehouse: tick Multi-Step Routes rồi bấm Save.",
+     "see": "Odoo cũng bật Storage Locations. Từ đây form kho mới có mục Shipments.",
+     "img": null
+    },
+    {
+     "t": "Vào Inventory → Configuration → Warehouses, chọn kho cần xem.",
+     "see": "Mở form kho.",
+     "img": null
+    },
+    {
+     "t": "Sang tab Warehouse Configuration. Đặt Incoming Shipments = Receive goods directly (1 step) và Outgoing Shipments = Deliver goods directly (1 step).",
+     "see": "Nhận hàng: hàng vào kho ngay khi Validate phiếu nhận. Giao hàng: hàng ra khỏi kho tới khách ngay khi Validate phiếu giao. Nhận và giao không cần cùng số bước.",
+     "img": "wh_settings"
+    },
+    {
+     "t": "Trên cùng tab, ô Manufacture có 3 lựa chọn: Manufacture (1 step) · Pick components and then manufacture (2 steps) · Pick components, manufacture and then store products (3 steps).",
+     "see": "Với 1 bước: Odoo tạo lệnh sản xuất nhưng KHÔNG tạo phiếu chuyển nguyên liệu ra và thành phẩm vào kho. Tồn vẫn cập nhật theo số đã dùng và số đã làm, chỉ là việc chuyển không được theo dõi.",
+     "img": "mfg_type"
+    }
+   ],
+   "effect": [
+    "Không có bút toán. Cấu hình này quyết định mỗi nghiệp vụ sinh ra bao nhiêu phiếu kho."
+   ],
+   "check": [
+    "Tạo thử một đơn mua nhỏ trên bản demo, xác nhận, xem nút Receipt sinh ra đúng một phiếu WH/IN."
+   ],
+   "errors": [
+    "Không thấy mục Shipments trên form kho → chưa bật Multi-Step Routes (bước 1).",
+    "Mỗi kho đặt kiểu Manufacture riêng; báo đúng kho đang xét."
+   ],
+   "vd": "Công ty A nhiều kho: hỏi người có quyền từng kho đang để 1, 2 hay 3 bước, vì số phiếu kho sinh ra ảnh hưởng cách đối chiếu.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_delivery_one_step.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/one_step_manufacturing.html"
+   ]
+  },
+  {
+   "id": "A2",
+   "group": "a",
+   "lv": "ok",
+   "title": "Cấu hình chế độ định giá, phương pháp giá và tài khoản",
+   "who": "Người có quyền cấu hình kế toán. Người làm giá thành dùng SOP này để KIỂM và báo, không tự sửa.",
+   "when": "Khi dựng kế toán kho, hoặc khi rà soát cấu hình (xem SOP E1).",
+   "before": [
+    "Đã cài Inventory và Accounting. Đã có bảng tài khoản (chart of accounts) của công ty."
+   ],
+   "flow": [
+    [
+     "Settings công ty",
+     "x"
+    ],
+    [
+     "Product Category (ghi đè)",
+     "x"
+    ],
+    [
+     "Địa điểm Loss / Production",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Accounting → Configuration → Settings, kéo xuống mục Inventory Valuation.",
+     "see": "Thấy các ô cấu hình cấp công ty.",
+     "img": null
+    },
+    {
+     "t": "Ô Inventory Valuation: chọn Perpetual (at invoicing) hoặc Periodic (at closing).",
+     "see": "Perpetual: hóa đơn mua ghi vào tài khoản tồn kho, giá vốn ghi khi bán. Periodic: hóa đơn mua ghi thẳng chi phí, giá trị tồn vào sổ qua bút toán đóng kỳ.",
+     "img": null
+    },
+    {
+     "t": "Ô Periodic Valuation: chọn Manual, Daily hoặc Monthly để tự động hóa bút toán đóng kỳ nếu cần.",
+     "see": "Tài liệu: với Perpetual, cách phổ biến hơn là để Manual và chỉ tạo bút toán đóng khi đóng kỳ tài chính, hoặc khi báo cáo kế toán cần đồng bộ với kho.",
+     "img": null
+    },
+    {
+     "t": "Ô Inventory Cost Method: chọn First in First Out (FIFO) (hoặc Standard Price, Average Cost).",
+     "see": "Đây là mặc định cấp công ty; nhóm sản phẩm có thể ghi đè.",
+     "img": null
+    },
+    {
+     "t": "Ô Valuation Account: chọn tài khoản tài sản ngắn hạn ghi giá trị tồn. Bấm mũi tên liên kết bên cạnh để mở tài khoản Stock Valuation và cập nhật Variation Account.",
+     "see": "Mở được form tài khoản.",
+     "img": null
+    },
+    {
+     "t": "Ô Journal: chọn nhật ký để ghi bút toán định giá.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Dòng «Other accounts can be defined on 'Inventory Loss' and 'Production' on dedicated locations»: bấm locations. Mở địa điểm loại Inventory Loss và đặt Loss Account. Mở địa điểm loại Production và đặt Cost of Production.",
+     "see": "Đây là tài khoản hao hụt kiểm kê và tài khoản đối ứng khi sản xuất.",
+     "img": null
+    },
+    {
+     "t": "Trong cùng màn hình Settings, mục Manufacturing: chọn WIP Account và WIP Overhead Account.",
+     "see": "Mặc định của tài liệu là 110500 và 110400 (mã bảng tài khoản mẫu, không phải TT200).",
+     "img": null
+    },
+    {
+     "t": "Vào Inventory → Configuration → Categories, mở từng nhóm sản phẩm. Kiểm Costing Method, Inventory Valuation và các tài khoản. Nhóm có thể ghi đè mọi giá trị mặc định cấp công ty.",
+     "see": "Mỗi nhóm hàng có cấu hình riêng nên phải rà từng nhóm.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Quyết định thời điểm giá trị kho đi vào sổ và tài khoản nào nhận bút toán."
+   ],
+   "check": [
+    "Với mỗi nhóm hàng: ghi lại Costing Method, Inventory Valuation, tài khoản tồn kho, tài khoản giá vốn; đối chiếu bảng mapping TT200 do kế toán trưởng duyệt."
+   ],
+   "errors": [
+    "Nhóm hàng để Costing Method khác công ty → cùng loại hàng tính giá kiểu khác nhau.",
+    "Tài liệu đã đọc không nói hậu quả của việc đổi phương pháp giá khi đã có tồn kho (chưa xác minh) → hỏi bên triển khai trước khi đổi."
+   ],
+   "vd": "Công ty A: Perpetual (at invoicing), FIFO. Cần ghi lại mỗi nhóm NVL, bán thành phẩm, thành phẩm, hàng hóa trỏ tài khoản nào.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/work_in_progress.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/scrapped_inventory_valuation.html"
+   ]
+  },
+  {
+   "id": "A3",
+   "group": "a",
+   "lv": "ok",
+   "title": "Bật các tính năng: Work Orders, By-Products, Landed Costs",
+   "who": "Người có quyền cấu hình.",
+   "when": "Khi cần tính giá thành theo công đoạn, có sản phẩm phụ, hoặc phân bổ chi phí mua hàng.",
+   "before": [
+    "App Manufacturing và Inventory đã cài."
+   ],
+   "flow": [
+    [
+     "Manufacturing Settings",
+     "x"
+    ],
+    [
+     "Inventory Settings",
+     "x"
+    ],
+    [
+     "Save",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Manufacturing → Configuration → Settings, mục Operations: tick Work Orders.",
+     "see": "Tab Operations xuất hiện trên BoM. Nếu không bật, BoM không có tab Operations.",
+     "img": "bom_wo_setting"
+    },
+    {
+     "t": "Cùng mục Operations: tick By-Products rồi Save.",
+     "see": "BoM có thêm tab By-products.",
+     "img": "byp_setting"
+    },
+    {
+     "t": "Vào Inventory → Configuration → Settings, kéo tới mục Valuation: tick Landed Costs, bấm Save.",
+     "see": "Sau khi trang tải lại, xuất hiện ô Default Journal ngay dưới Landed Costs. Chọn nhật ký ghi mọi bút toán landed cost.",
+     "img": "lc_enable"
+    }
+   ],
+   "effect": [
+    "Không có bút toán. Mở khóa các màn hình dùng ở SOP B5, C1, C6."
+   ],
+   "check": [
+    "Mở một BoM bất kỳ: thấy tab Operations và By-products. Mở menu Inventory → Operations: thấy Landed Costs."
+   ],
+   "errors": [
+    "Không thấy tab Operations → Work Orders chưa bật.",
+    "Không thấy ô Default Journal → chưa Save sau khi tick Landed Costs."
+   ],
+   "vd": "Công ty A: nếu có công đoạn, nên bật Work Orders vì chi phí nhân công/máy chỉ tính được khi lệnh có công đoạn.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/bill_configuration.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/landed_costs.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/workflows/byproducts.html"
+   ]
+  },
+  {
+   "id": "B1",
+   "group": "b",
+   "lv": "ok",
+   "title": "Nhận hàng từ nhà cung cấp (đơn mua → phiếu nhận)",
+   "who": "Người dùng có quyền Purchase và Inventory.",
+   "when": "Mỗi lần hàng của nhà cung cấp về kho.",
+   "before": [
+    "Kho đặt nhận hàng 1 bước (SOP A1).",
+    "Sản phẩm và nhà cung cấp đã có trong hệ thống."
+   ],
+   "flow": [
+    [
+     "Purchase Order",
+     "n"
+    ],
+    [
+     "Receipt: Validate",
+     "k"
+    ],
+    [
+     "Vendor Bill: Confirm",
+     "t"
+    ],
+    [
+     "Bút toán đóng kỳ",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào app Purchase, bấm New.",
+     "see": "Mở form Request for Quotation (RfQ) trống.",
+     "img": null
+    },
+    {
+     "t": "Chọn nhà cung cấp ở ô Supplier (Vendor). Điền các ô cần thiết.",
+     "see": "",
+     "img": "po_new"
+    },
+    {
+     "t": "Tab Products: bấm Add a product, chọn sản phẩm, nhập số lượng và giá.",
+     "see": "Giá trên dòng này là giá dùng định giá hàng nhận (xem phần Ảnh hưởng số liệu).",
+     "img": null
+    },
+    {
+     "t": "Bấm Confirm Order.",
+     "see": "RfQ chuyển sang trạng thái Purchase Order. Đầu form hiện nút Receipt.",
+     "img": "po_receipt_btn"
+    },
+    {
+     "t": "Bấm nút Receipt.",
+     "see": "Mở phiếu nhận hàng (mã WH/IN).",
+     "img": null
+    },
+    {
+     "t": "Khi hàng đã về, kiểm số lượng rồi bấm Validate.",
+     "see": "Phiếu nhận chuyển sang Done.",
+     "img": "receipt_done"
+    },
+    {
+     "t": "Quay lại đơn mua qua breadcrumb phía trên.",
+     "see": "Cột Received của dòng sản phẩm bằng Quantity đã đặt.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Kho: giá trị tăng = số lượng × đơn giá trên dòng đơn mua (quy đổi tiền tệ công ty). Không có đơn mua thì dùng giá hiện tại (Cost) của sản phẩm.",
+    "Kế toán (Perpetual): CHƯA ghi bút toán khi nhận hàng. Giá trị vào sổ khi hóa đơn mua được ghi (SOP B2) hoặc khi đóng kỳ (SOP D1).",
+    "FIFO: lô vừa nhận giữ giá riêng của nó."
+   ],
+   "check": [
+    "Phiếu nhận ở Done và cột Received khớp Quantity.",
+    "Inventory → Reporting → Stock: tồn tăng đúng số lượng (SOP B6)."
+   ],
+   "errors": [
+    "Nhận thiếu hoặc thừa so với đơn: tài liệu trang này không nêu cách xử lý (chưa xác minh) → hỏi người phụ trách kho trước khi Validate."
+   ],
+   "vd": "Công ty A (FIFO): mỗi lần nhận cùng một NVL với giá khác nhau tạo ra các lô giá khác nhau; giá vốn xuất sau này đi theo lô cũ nhất.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_delivery_one_step.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/operations_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/cheat_sheet.html"
+   ]
+  },
+  {
+   "id": "B2",
+   "group": "b",
+   "lv": "ok",
+   "title": "Nhập hóa đơn mua hàng (vendor bill) và khớp đơn mua",
+   "who": "Kế toán có quyền Accounting.",
+   "when": "Khi nhận được hóa đơn của nhà cung cấp.",
+   "before": [
+    "Đơn mua đã có (SOP B1). Nên nhận hàng trước: danh sách Purchase Matching chỉ hiện các dòng đã nhận."
+   ],
+   "flow": [
+    [
+     "Purchase Order",
+     "n"
+    ],
+    [
+     "Receipt",
+     "k"
+    ],
+    [
+     "Vendor Bill: Confirm",
+     "t"
+    ],
+    [
+     "Đóng kỳ",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Accounting → Vendors → Bills, bấm New.",
+     "see": "Mở bill trống. Cách khác: trên dashboard, bấm New ở nhật ký Purchases.",
+     "img": null
+    },
+    {
+     "t": "Điền Vendor, Bill Reference (số hóa đơn của NCC), Bill Date, Accounting Date (nếu cần), Payment Terms hoặc Due Date, Journal.",
+     "see": "Odoo tự điền một số ô theo hồ sơ NCC và các đơn/hóa đơn trước.",
+     "img": null
+    },
+    {
+     "t": "Tab Invoice Lines: chọn sản phẩm, số lượng, giá, thuế. Hoặc dùng Auto-Complete để lấy từ đơn mua/hóa đơn cũ.",
+     "see": "Dòng bill hiện đủ.",
+     "img": null
+    },
+    {
+     "t": "Bấm Save. Bấm nút Purchase Matching, chọn các dòng đơn mua đã nhận và bill nháp (màu xám), bấm Match rồi Draft Bill.",
+     "see": "Đầu bill hiện nút trỏ tới số đơn mua. Nếu không có đơn mua: chọn bill nháp, Add to PO, Add Products, tạo đơn mua, Receive Products, Validate.",
+     "img": null
+    },
+    {
+     "t": "Kiểm lại số liệu rồi bấm Confirm.",
+     "see": "Bill chuyển sang Posted, sinh bút toán và được cấp số theo dãy. Bill đã Posted không sửa được; muốn sửa bấm Reset to draft.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Perpetual: Nợ tài khoản tồn kho (Stock Account của nhóm sản phẩm), Nợ VAT được khấu trừ, Có Phải trả nhà cung cấp. Ví dụ số giả của tài liệu: hàng 50, VAT 4,5, phải trả 54,5 (cân).",
+    "Periodic: Nợ tài khoản chi phí (Expense Account của sản phẩm/nhóm) thay cho tài khoản tồn kho.",
+    "Mã tài khoản trong ví dụ của tài liệu (340000, 440000, 411000) là bảng tài khoản mẫu, không phải TT200."
+   ],
+   "check": [
+    "Bill Posted và có số. Smart button hiện đúng số đơn mua.",
+    "Mở bút toán của bill: Nợ bằng Có."
+   ],
+   "errors": [
+    "Quên nhận hàng trước → Purchase Matching không hiện dòng.",
+    "Nhập sai Bill Reference → khó đối chiếu sau."
+   ],
+   "vd": "Công ty A (Perpetual): giữa lúc nhận hàng và lúc ghi bill, giá trị kho đã tăng nhưng sổ chưa; chênh đó xử lý ở bút toán dồn tích (SOP D2).",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/finance/accounting/vendor_bills.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/cheat_sheet.html"
+   ]
+  },
+  {
+   "id": "B3",
+   "group": "b",
+   "lv": "ok",
+   "title": "Giao hàng cho khách (đơn bán → phiếu giao)",
+   "who": "Người dùng có quyền Sales và Inventory.",
+   "when": "Mỗi lần xuất hàng bán cho khách.",
+   "before": [
+    "Kho đặt giao hàng 1 bước (SOP A1)."
+   ],
+   "flow": [
+    [
+     "Sales Order",
+     "n"
+    ],
+    [
+     "Delivery: Validate",
+     "k"
+    ],
+    [
+     "Customer Invoice",
+     "t"
+    ],
+    [
+     "Đóng kỳ",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào app Sales, bấm New.",
+     "see": "Mở báo giá trống.",
+     "img": null
+    },
+    {
+     "t": "Chọn khách ở ô Customer, điền các ô cần thiết.",
+     "see": "",
+     "img": "so_new"
+    },
+    {
+     "t": "Tab Product: Add a product, chọn sản phẩm và số lượng.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Bấm Confirm.",
+     "see": "Báo giá thành Sales Order. Hiện nút Delivery.",
+     "img": "so_delivery_btn"
+    },
+    {
+     "t": "Bấm nút Delivery.",
+     "see": "Mở phiếu giao (mã WH/OUT).",
+     "img": null
+    },
+    {
+     "t": "Đặt ô Quantity bằng Demand (số khách đặt), rồi bấm Validate.",
+     "see": "Phiếu giao chuyển sang Done.",
+     "img": "delivery_done"
+    },
+    {
+     "t": "Quay lại đơn bán.",
+     "see": "Cột Delivered của dòng sản phẩm bằng Quantity đã đặt.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Kho: giá trị giảm theo phương pháp giá. FIFO: lấy theo lô nhập cũ nhất còn tồn.",
+    "Kế toán (Anglo-Saxon + Perpetual): giá vốn (COGS) ghi khi hóa đơn bán được ghi sổ, không ghi lúc giao hàng.",
+    "Hàng đã giao chưa xuất hóa đơn: nằm ở báo cáo Invoices To Be Issued (SOP D2)."
+   ],
+   "check": [
+    "Phiếu giao Done, Delivered khớp.",
+    "Inventory → Reporting → Stock: tồn giảm đúng."
+   ],
+   "errors": [
+    "Giao thiếu số lượng so với Demand: tài liệu trang này không nêu cách xử lý phần còn lại (chưa xác minh)."
+   ],
+   "vd": "Công ty A (FIFO, Perpetual): giá vốn của lần giao phụ thuộc lô nào còn tồn cũ nhất; đây là lý do giá vốn có thể khác nhau giữa hai lần bán cùng sản phẩm.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/shipping_receiving/daily_operations/receipts_delivery_one_step.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/operations_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html"
+   ]
+  },
+  {
+   "id": "B4",
+   "group": "b",
+   "lv": "ok",
+   "title": "Kiểm kê và điều chỉnh tồn kho",
+   "who": "Người kiểm kê (nhập số đếm) và người có quyền duyệt (Apply).",
+   "when": "Khi kiểm kê định kỳ hoặc khi tồn sổ sách lệch thực tế.",
+   "before": [
+    "Sản phẩm có lịch sử tồn kho mới hiện ở trang Physical Inventory."
+   ],
+   "flow": [
+    [
+     "Đếm thực tế",
+     "x"
+    ],
+    [
+     "Nhập Counted",
+     "x"
+    ],
+    [
+     "Apply",
+     "k"
+    ],
+    [
+     "Bút toán chênh lệch",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Inventory → Operations → Physical Inventory.",
+     "see": "Danh sách mọi sản phẩm có lịch sử tồn, kể cả tồn âm.",
+     "img": "cnt_page"
+    },
+    {
+     "t": "Bấm vào ô Counted của sản phẩm cần điều chỉnh và nhập số đếm thực tế. Muốn thêm dòng mới: bấm New.",
+     "see": "Cột Difference tự tính: số dương màu xanh (đếm nhiều hơn sổ), số âm màu đỏ (đếm ít hơn). Lúc này mới GHI NHẬN, chưa áp dụng.",
+     "img": "cnt_diff"
+    },
+    {
+     "t": "Áp dụng: bấm nút Apply ở cuối dòng (một dòng), hoặc Apply All, hoặc tick các dòng rồi bấm Apply ở đầu trang.",
+     "see": "Hiện cửa sổ Physical Inventory.",
+     "img": null
+    },
+    {
+     "t": "Trong cửa sổ, kiểm Inventory Reason (mặc định Physical Inventory, sửa nếu cần) và Counting Date, rồi bấm Update Quantities.",
+     "see": "Tồn kho được cập nhật. Odoo tạo bản ghi dịch chuyển trong Moves History để truy vết.",
+     "img": "cnt_apply"
+    },
+    {
+     "t": "Xem lại lịch sử điều chỉnh khi cần.",
+     "see": "",
+     "img": "cnt_hist"
+    }
+   ],
+   "effect": [
+    "Dịch chuyển đi từ/đến địa điểm ảo Inventory adjustment (ngoài kho) nên đổi cả số lượng và giá trị tồn.",
+    "Đơn giá dùng là giá bình quân hiện tại (trường Cost của sản phẩm), kể cả khi nhóm dùng FIFO.",
+    "Tài khoản ghi chênh lệch: Loss Account của địa điểm loại Inventory Loss (SOP A2)."
+   ],
+   "check": [
+    "Cột Difference về 0 sau khi Apply.",
+    "Moves History có dòng điều chỉnh với đúng lý do."
+   ],
+   "errors": [
+    "Apply nhiều dòng mà chưa lưu → bấm Save ở đầu màn hình trước (tài liệu nêu có thể cần).",
+    "Chênh lệch kiểm kê không vào đúng tài khoản → kiểm Loss Account của địa điểm Inventory Loss (SOP A2)."
+   ],
+   "vd": "Công ty A: số điều chỉnh kiểm kê định giá theo Cost (bình quân), không theo giá lô FIFO. Chênh lệch kiểm kê lớn kỳ này nên được hỏi nguyên nhân thay vì chỉ Apply.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/warehouses_storage/inventory_management/count_products.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/operations_valuation.html"
+   ]
+  },
+  {
+   "id": "B5",
+   "group": "b",
+   "lv": "ok",
+   "title": "Landed cost: phân bổ chi phí mua hàng vào giá nhập kho",
+   "who": "Người dùng Inventory/Purchase/Accounting đã được cấp quyền; cấu hình ban đầu do người có quyền.",
+   "when": "Khi có cước vận chuyển, bảo hiểm, thuế nhập khẩu hay phí khác cần cộng vào giá trị hàng đã nhận.",
+   "before": [
+    "Đã bật Landed Costs và chọn Default Journal (SOP A3).",
+    "Hàng thuộc nhóm có Costing Method là AVCO hoặc FIFO (bắt buộc).",
+    "Có sản phẩm chi phí loại Service."
+   ],
+   "flow": [
+    [
+     "PO + Receipt",
+     "k"
+    ],
+    [
+     "Vendor Bill (có dòng chi phí)",
+     "t"
+    ],
+    [
+     "Create Landed Costs",
+     "x"
+    ],
+    [
+     "Validate",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Tạo sản phẩm chi phí: Inventory → Products → Products → New. Đặt tên (VD International Shipping), Product Type = Service.",
+     "see": "Landed cost product bắt buộc là Service.",
+     "img": null
+    },
+    {
+     "t": "Tab Purchase: tick Is a Landed Cost (mục Vendor Bills). Chọn Default Split Method: Equal · By Quantity · By Current Cost · By Weight · By Volume.",
+     "see": "",
+     "img": "lc_product"
+    },
+    {
+     "t": "Tạo đơn mua và nhận hàng như SOP B1.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Từ đơn mua tạo vendor bill nháp (Bill Matching). Add a line: thêm sản phẩm chi phí vào bill.",
+     "see": "Cột Landed Costs: dòng hàng KHÔNG tick, dòng chi phí CÓ tick. Đầu bill hiện nút Create Landed Costs.",
+     "img": "lc_check"
+    },
+    {
+     "t": "Bấm Create Landed Costs.",
+     "see": "Tạo bản ghi landed cost với chi phí đã điền ở tab Additional Costs.",
+     "img": "lc_create"
+    },
+    {
+     "t": "Ở ô Transfers chọn phiếu nhận mà chi phí thuộc về (chỉ chọn được phiếu đã validate). Bấm Compute.",
+     "see": "",
+     "img": "lc_transfers"
+    },
+    {
+     "t": "Mở tab Valuation Adjustments.",
+     "see": "Original Value (giá đơn mua) + Additional Landed Cost = New Value.",
+     "img": null
+    },
+    {
+     "t": "Bấm Validate.",
+     "see": "Ghi bút toán landed cost vào nhật ký đã chọn; xem tại Accounting → Accounting → Journal Entries (số dạng STJ/…).",
+     "img": "lc_journal"
+    }
+   ],
+   "effect": [
+    "Tăng giá trị hàng đã nhận, không đổi số lượng. Bút toán ghi vào Default Journal."
+   ],
+   "check": [
+    "New Value = Original Value + chi phí.",
+    "Tìm được bút toán landed cost trong Journal Entries."
+   ],
+   "errors": [
+    "Không chọn được phiếu → phiếu chưa validate.",
+    "Không áp dụng được → nhóm hàng không phải AVCO hoặc FIFO."
+   ],
+   "vd": "Công ty A nhập NVL có cước và thuế: nếu không dùng landed cost thì giá nhập thấp hơn giá thực và giá thành sản xuất bị thấp theo.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/landed_costs.html"
+   ]
+  },
+  {
+   "id": "B6",
+   "group": "b",
+   "lv": "ok",
+   "title": "Xem tồn kho và giá trị tồn; sửa giá trị lô",
+   "who": "Người dùng có quyền xem báo cáo Inventory.",
+   "when": "Đối chiếu tồn, xem giá từng lô FIFO, hoặc tìm lý do giá trị lệch.",
+   "before": [
+    "Hàng đã có dịch chuyển kho."
+   ],
+   "flow": [
+    [
+     "Stock report",
+     "x"
+    ],
+    [
+     "Total Value",
+     "x"
+    ],
+    [
+     "Adjust Valuation (nếu được phép)",
+     "k"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Inventory → Reporting → Stock.",
+     "see": "Danh sách sản phẩm: số lượng, Unit Cost, Total Value. Có tuỳ chọn Inventory at Date để xem tại ngày trước.",
+     "img": "val_stock"
+    },
+    {
+     "t": "Mặc định số liệu là cả công ty. Muốn xem theo kho: lọc Warehouses ở thanh bên.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Bấm vào Total Value của một sản phẩm.",
+     "see": "Hiện các lô nhập còn số lượng. FIFO: mỗi lô giữ giá riêng. AVCO/Standard: dùng đơn giá hiện tại.",
+     "img": "val_total"
+    },
+    {
+     "t": "Chỉ khi có lý do chính đáng và được phép (FIFO/AVCO): chọn các lô nhập → Actions → Adjust Valuation, nhập Value mới và Description.",
+     "see": "Giá trị lô đổi. Ghi rõ lý do trong Description.",
+     "img": null
+    },
+    {
+     "t": "Muốn xem từng dịch chuyển: mở báo cáo Moves Analysis.",
+     "see": "Có Value, Remaining Quantity, Remaining Value. Value chia số lượng ra đơn giá đã áp dụng.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Adjust Valuation làm đổi giá trị tồn mà không có nhập/xuất tương ứng."
+   ],
+   "check": [
+    "Tổng Total Value hợp lý so với số lượng × giá lô.",
+    "Mọi lần Adjust Valuation đều có Description."
+   ],
+   "errors": [
+    "Xem nhầm cả công ty khi cần theo kho → lọc Warehouses.",
+    "Hiểu nhầm trường Cost (bình quân) là giá lô FIFO → xem Total Value để thấy giá từng lô."
+   ],
+   "vd": "Công ty A: khi giá vốn một lần bán 'lạ', mở Total Value và Moves Analysis của sản phẩm đó để xem lô nào bị trừ.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/cheat_sheet.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/operations_valuation.html"
+   ]
+  },
+  {
+   "id": "C1",
+   "group": "c",
+   "lv": "ok",
+   "title": "Tạo định mức (BoM): thành phần và công đoạn",
+   "who": "Người có quyền Manufacturing.",
+   "when": "Khi có sản phẩm mới cần sản xuất, hoặc khi đổi định mức.",
+   "before": [
+    "Sản phẩm thành phẩm và nguyên liệu đã có.",
+    "Muốn có tab Operations: đã bật Work Orders (SOP A3).",
+    "Đã có work center (SOP C2)."
+   ],
+   "flow": [
+    [
+     "Chọn sản phẩm",
+     "x"
+    ],
+    [
+     "Components",
+     "x"
+    ],
+    [
+     "Operations",
+     "x"
+    ],
+    [
+     "Miscellaneous",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Manufacturing → Products → Products, mở sản phẩm. Bấm nút Bill of Materials, bấm New. (Cách khác: Manufacturing → Products → Bills of Materials → New.)",
+     "see": "",
+     "img": "bom_btn"
+    },
+    {
+     "t": "Đặt BoM Type = Manufacture this Product. Ô Product tự điền; ô Quantity = số đơn vị thành phẩm mà BoM này làm ra.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Tab Components: Add a line, chọn Component, nhập Quantity. Lặp lại cho mọi nguyên liệu.",
+     "see": "Danh sách thành phần đầy đủ.",
+     "img": "bom_comp"
+    },
+    {
+     "t": "Tab Operations: Add a line, hiện cửa sổ Create Operations. Điền Operation (tên công đoạn), Work Center, Duration Computation. Nếu Set duration manually thì điền Default Duration (ước tính thời gian).",
+     "see": "Chi phí công đoạn = chi phí giờ của work center × thời lượng.",
+     "img": "bom_create_op"
+    },
+    {
+     "t": "Bấm Save & Close (hoặc Save & New để thêm công đoạn).",
+     "see": "Công đoạn hiện trong tab Operations. Mỗi công đoạn chỉ thuộc về MỘT BoM.",
+     "img": "bom_ops"
+    },
+    {
+     "t": "Tab Miscellaneous: xem Flexible Consumption (Blocked / Allowed / Allowed with Warning), Manufacturing Readiness, Analytic Distribution.",
+     "see": "Flexible Consumption quyết định có cho dùng NVL khác định mức không. Analytic Distribution cho phép ghi tự động chi phí sản xuất theo mô hình phân bổ phân tích đã tạo.",
+     "img": "bom_misc"
+    }
+   ],
+   "effect": [
+    "Không có bút toán. BoM là cơ sở tính MO Cost (chi phí dự kiến) của lệnh sản xuất."
+   ],
+   "check": [
+    "MO Cost của lệnh mới tạo từ BoM này khớp với tay tính: NVL + công đoạn (SOP C4)."
+   ],
+   "errors": [
+    "Quên đặt Work Center cho công đoạn → công đoạn không có chi phí giờ.",
+    "BoM không có Operations → MO Cost chỉ có NVL, không có nhân công/máy."
+   ],
+   "vd": "Công ty A: kiểm xem mỗi BoM đã khai đủ công đoạn chưa. BoM chỉ có NVL cho giá thành thấp hơn thực tế.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/bill_configuration.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/configure_manufacturing_product.html"
+   ]
+  },
+  {
+   "id": "C2",
+   "group": "c",
+   "lv": "ok",
+   "title": "Work center: chi phí giờ, tài khoản chi phí, và giờ công nhân viên",
+   "who": "Người có quyền Manufacturing (work center) và người có quyền Employees (Hourly Cost).",
+   "when": "Khi dựng trạm làm việc, hoặc khi kiểm vì sao Real Cost nhân công lệch.",
+   "before": [
+    "Đã cài Manufacturing, bật Work Orders."
+   ],
+   "flow": [
+    [
+     "Work Centers",
+     "x"
+    ],
+    [
+     "Cost per hour",
+     "x"
+    ],
+    [
+     "Expense Account",
+     "x"
+    ],
+    [
+     "Employees: Hourly Cost",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Manufacturing → Configuration → Work Centers, mở một work center.",
+     "see": "Form work center.",
+     "img": null
+    },
+    {
+     "t": "Tab General Information, mục Cost per hour: ô per workcenter = chi phí vận hành 1 giờ của trạm; ô per employee = chi phí giờ mỗi nhân viên làm tại trạm.",
+     "see": "Ô per employee CHỈ dùng tính chi phí dự kiến (MO Cost), không dùng cho chi phí thực tế.",
+     "img": "wc_general"
+    },
+    {
+     "t": "Cùng tab, ô Expense Account: chọn tài khoản dùng khi lệnh sản xuất Done.",
+     "see": "Để trống thì dùng expense account của thành phẩm (nguyên văn tài liệu).",
+     "img": null
+    },
+    {
+     "t": "Vào app Employees, mở hồ sơ nhân viên → tab Settings → mục Application Settings → ô Hourly Cost: nhập giờ công.",
+     "see": "Real Cost nhân công dùng ô này.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Chi phí giờ × thời lượng công đoạn = chi phí công đoạn trong giá thành.",
+    "Ví dụ tài liệu: per employee của work center = 50/giờ, nhân viên làm có Hourly Cost 60/giờ → MO Cost tính 50, Real Cost tính 60."
+   ],
+   "check": [
+    "Mọi work center đang dùng có số ở Cost per hour.",
+    "Nhân viên làm công đoạn có Hourly Cost."
+   ],
+   "errors": [
+    "Expense Account để trống → chi phí đi theo tài khoản chi phí của thành phẩm (suy luận: có thể dồn vào giá vốn, không tách nhân công/chung theo TT200).",
+    "Hourly Cost trống → Real Cost thiếu nhân công."
+   ],
+   "vd": "Công ty A: rà từng work center xem Cost per hour và Expense Account; báo những work center để trống.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/advanced_configuration/using_work_centers.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/mo_costs.html"
+   ]
+  },
+  {
+   "id": "C3",
+   "group": "c",
+   "lv": "ok",
+   "title": "Chạy một lệnh sản xuất từ tạo đến Done",
+   "who": "Người dùng Manufacturing.",
+   "when": "Mỗi lần sản xuất một lô.",
+   "before": [
+    "Sản phẩm có BoM (SOP C1). Kho đặt kiểu sản xuất 1 bước (SOP A1)."
+   ],
+   "flow": [
+    [
+     "Tạo MO + Confirm",
+     "x"
+    ],
+    [
+     "Start / Done từng công đoạn",
+     "x"
+    ],
+    [
+     "Produce All",
+     "k"
+    ],
+    [
+     "Giá thành (SOP C4)",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Manufacturing → Operations → Manufacturing Orders, bấm New.",
+     "see": "Form MO trống.",
+     "img": null
+    },
+    {
+     "t": "Chọn Product. Ô Bill of Material tự điền BoM. Nếu sản phẩm có nhiều BoM thì chọn BoM cần dùng.",
+     "see": "Tab Components và Work Orders tự điền theo BoM.",
+     "img": null
+    },
+    {
+     "t": "Nếu lệnh này cần thêm NVL hoặc công đoạn ngoài BoM: Add a line ở tab Components hoặc Work Orders.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Bấm Confirm.",
+     "see": "MO xác nhận, sẵn sàng làm.",
+     "img": null
+    },
+    {
+     "t": "Tab Work Orders: khi bắt đầu công đoạn đầu tiên, bấm Start của công đoạn đó.",
+     "see": "Odoo bắt đầu đồng hồ đo thời gian công đoạn.",
+     "img": "mo_start"
+    },
+    {
+     "t": "Khi xong công đoạn, bấm Done của công đoạn đó. Lặp lại cho từng công đoạn.",
+     "see": "",
+     "img": "mo_done"
+    },
+    {
+     "t": "Sau khi xong mọi công đoạn, bấm Produce All ở đầu màn hình.",
+     "see": "MO chuyển sang Done và thành phẩm vào tồn kho.",
+     "img": null
+    },
+    {
+     "t": "Cách khác dùng Shop Floor: ở tab Work Orders bấm biểu tượng mũi tên ra ngoài của công đoạn → Open Shop Floor. Làm từng bước trên thẻ công đoạn, bước cuối là Register Production. Công đoạn cuối: Close Production.",
+     "see": "Mark as Done hoặc Close Production; có nút Undo trước khi thẻ biến mất.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Thành phẩm nhập kho với giá trị = NVL tiêu hao (theo giá riêng) + nhân công + chi phí máy.",
+    "Anglo-Saxon + Perpetual: khi MO được validate, tài khoản định giá của thành phẩm và thành phần được cập nhật; Cost of Production là tài khoản đối ứng cho cả hai.",
+    "Cột MO Cost cập nhật bằng Real Cost khi bấm Produce All."
+   ],
+   "check": [
+    "MO ở Done, tồn thành phẩm tăng, tồn NVL giảm.",
+    "Mở MO Overview (SOP C4): MO Cost = Real Cost."
+   ],
+   "errors": [
+    "Làm sai thứ tự: theo tài liệu, hoàn tất mọi công đoạn rồi mới bấm Produce All.",
+    "Flexible Consumption = Blocked: người làm phải dùng đúng lượng NVL trong BoM. Muốn cho lệch thì người có quyền chọn Allowed hoặc Allowed with Warning trên BoM."
+   ],
+   "vd": "Công ty A (FIFO): NVL của lệnh bị trừ theo lô FIFO của chính NVL đó, nên cùng một BoM chạy hai ngày khác nhau có thể có giá thành khác nhau dù số lượng NVL giống nhau.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/one_step_manufacturing.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/operations_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html"
+   ]
+  },
+  {
+   "id": "C4",
+   "group": "c",
+   "lv": "ok",
+   "title": "Đọc giá thành của lệnh sản xuất (MO Cost và Real Cost)",
+   "who": "Kế toán giá thành.",
+   "when": "Sau khi MO Done, hoặc khi cần soát giá thành dở dang.",
+   "before": [
+    "MO đã Confirm. BoM có công đoạn và work center có chi phí giờ (SOP C1, C2)."
+   ],
+   "flow": [
+    [
+     "MO Overview",
+     "x"
+    ],
+    [
+     "So MO Cost với Real Cost",
+     "x"
+    ],
+    [
+     "Tìm nguyên nhân chênh",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Manufacturing → Operations → Manufacturing Orders, mở một MO. Bấm nút Overview ở đầu MO.",
+     "see": "Mỗi dòng NVL và mỗi công đoạn có cột MO Cost (dự kiến theo BoM) và Real Cost (thực tế). Cuối bảng là dòng Unit Cost.",
+     "img": "mo_ov_before"
+    },
+    {
+     "t": "Trước khi làm: hai cột bằng nhau (đều là dự kiến).",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Trong khi làm: nếu dùng NVL khác định mức, công đoạn chạy lâu hơn, hoặc giá giờ nhân viên khác, cột Real Cost bắt đầu khác.",
+     "see": "Số chênh lớn được tô đỏ hoặc xanh. Ví dụ tài liệu: công đoạn chạy thêm 10 phút → Real Cost 70 so với MO Cost 65.",
+     "img": "mo_ov_during"
+    },
+    {
+     "t": "Sau khi bấm Produce All: cột MO Cost cập nhật bằng Real Cost.",
+     "see": "",
+     "img": "mo_ov"
+    },
+    {
+     "t": "Giá thành trung bình của sản phẩm: Inventory → Products → Products → mở sản phẩm → tab General Information → ô Cost.",
+     "see": "Cost là trung bình chi phí các MO đã hoàn thành. Ví dụ tài liệu: 65 (dự kiến) và MO đầu 70 → Cost 67,5.",
+     "img": null
+    },
+    {
+     "t": "Tổng hợp nhiều lệnh: Manufacturing → Reporting → Production Analysis. Chọn Measures như Cost/Unit, Total Component Cost, Total Employee Cost, Total Operation Cost.",
+     "see": "",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Đọc, không tạo bút toán."
+   ],
+   "check": [
+    "Với lệnh mẫu: MO Cost = NVL + công đoạn. Real Cost khác thì có giải thích: lượng NVL, thời gian, giờ công, hoặc giá NVL đổi."
+   ],
+   "errors": [
+    "Real Cost không có phần công đoạn → BoM không có Operations hoặc work center chưa có chi phí giờ.",
+    "Nhầm trường Cost (bình quân) với giá lô FIFO (xem SOP B6)."
+   ],
+   "vd": "Công ty A: lập bảng so sánh MO Cost và Real Cost mỗi tháng theo từng sản phẩm; chênh lớn kéo dài là dấu hiệu BoM hoặc work center cấu hình sai.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/mo_costs.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/work_in_progress.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/reporting/production_analysis.html"
+   ]
+  },
+  {
+   "id": "C5",
+   "group": "c",
+   "lv": "ok",
+   "title": "Bút toán WIP (sản phẩm dở dang) cuối kỳ",
+   "who": "Kế toán có quyền Manufacturing và Accounting.",
+   "when": "Cuối kỳ, khi còn lệnh sản xuất đang chạy dở và cần phản ánh giá trị dở dang vào sổ.",
+   "before": [
+    "Đã chọn WIP Account và WIP Overhead Account (SOP A2).",
+    "Lệnh sản xuất đã có tiêu hao hoặc công đoạn chạy."
+   ],
+   "flow": [
+    [
+     "Xem đã tiêu hao",
+     "x"
+    ],
+    [
+     "Post WIP Accounting Entry",
+     "t"
+    ],
+    [
+     "Kiểm Balance Sheet",
+     "x"
+    ],
+    [
+     "Đảo bút toán",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Mở MO đang chạy. Tab Components: xem cột Consumed (số đã tiêu hao).",
+     "see": "",
+     "img": "wip_consumed"
+    },
+    {
+     "t": "Tab Work Orders: xem cột Real Duration (thời gian đã làm của mỗi công đoạn).",
+     "see": "",
+     "img": "wip_duration"
+    },
+    {
+     "t": "Bấm nút Overview: xem cột Real Cost.",
+     "see": "Chi phí máy và nhân công gộp ở mục Operations. Đây là số sẽ vào bút toán WIP.",
+     "img": "wip_cost"
+    },
+    {
+     "t": "Bấm biểu tượng bánh răng → Post WIP Accounting Entry.",
+     "see": "Hiện cửa sổ Post WIP Accounting Entry.",
+     "img": null
+    },
+    {
+     "t": "Chọn WIP accounting journal, chỉnh ngày và dòng nếu cần. Ô Reversal Date: ngày đảo bút toán (mặc định ngày hôm sau).",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Bấm Post WIP.",
+     "see": "Bút toán WIP được đăng.",
+     "img": null
+    },
+    {
+     "t": "Vào Accounting → Reporting → Balance Sheet, kiểm kỳ báo cáo.",
+     "see": "Số dư WIP phản ánh tiêu hao tại thời điểm đăng.",
+     "img": null
+    },
+    {
+     "t": "Đảo: mở MO, bấm nút WIP, chọn bút toán đảo, Actions → Confirm Entries. Kiểm lại Balance Sheet.",
+     "see": "Số dư WIP về 0 sau khi đảo. Nếu không như mong đợi, kiểm lại ngày và bộ lọc ngày của báo cáo.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Nguyên văn: «WIP accounting entries are not automatically tied to MO progress.» Bút toán phản ánh chi phí tại thời điểm đăng.",
+    "Tài liệu không nêu các dòng Nợ/Có của bút toán WIP.",
+    "Mã mặc định 110500 và 110400 là mã bảng tài khoản mẫu; công ty TT200 phải trỏ tài khoản của mình."
+   ],
+   "check": [
+    "Balance Sheet: số dư WIP đúng lúc đăng và về 0 sau đảo.",
+    "Bút toán đảo đã được Confirm."
+   ],
+   "errors": [
+    "Quên đăng WIP cuối kỳ → giá trị dở dang không có trên sổ.",
+    "Quên Confirm bút toán đảo → WIP cộng dồn qua kỳ."
+   ],
+   "vd": "Công ty A: ghi lại ai đăng WIP cuối kỳ, đã đảo kỳ trước chưa, và WIP Account trỏ tài khoản nào.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/work_in_progress.html"
+   ]
+  },
+  {
+   "id": "C6",
+   "group": "c",
+   "lv": "ok",
+   "title": "Hao hụt (scrap) trong sản xuất và đưa vào báo cáo kết quả",
+   "who": "Người dùng Manufacturing (scrap) và người có quyền cấu hình (địa điểm, tài khoản).",
+   "when": "Khi NVL hoặc thành phẩm hỏng, hết hạn hoặc không dùng được.",
+   "before": [
+    "Địa điểm Scrap có loại Inventory Loss và đã đặt Loss Account (SOP A2).",
+    "Nhóm hàng dùng FIFO hoặc AVCO."
+   ],
+   "flow": [
+    [
+     "Mở MO",
+     "x"
+    ],
+    [
+     "Scrap",
+     "k"
+    ],
+    [
+     "Loss Account",
+     "t"
+    ],
+    [
+     "Profit and Loss",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Mở lệnh sản xuất. Bấm biểu tượng bánh răng, chọn Scrap.",
+     "see": "Thành phần: scrap được khi MO ở Draft hoặc Confirmed. Thành phẩm: chỉ scrap khi MO đã Done. Trong Shop Floor chỉ scrap được thành phần.",
+     "img": "scrap_cog"
+    },
+    {
+     "t": "Cửa sổ Scrap Products: chọn Product, nhập Quantity. Source Location mặc định là địa điểm pre-production của kho; Scrap Location mặc định là Virtual Locations/Scrap.",
+     "see": "",
+     "img": "scrap_win"
+    },
+    {
+     "t": "Chỉ bật Replenish Scrapped Quantities nếu kho dùng sản xuất 2 hoặc 3 bước.",
+     "see": "Tạo phiếu lấy lại phần NVL bị scrap.",
+     "img": null
+    },
+    {
+     "t": "Bấm Scrap Products.",
+     "see": "Hàng bị trừ khỏi kho, chuyển tới địa điểm scrap. Nút Scraps xuất hiện trên MO để xem các lệnh scrap.",
+     "img": null
+    },
+    {
+     "t": "Để thấy hao hụt trong báo cáo: kiểm địa điểm Scrap là loại Inventory Loss và có Loss Account.",
+     "see": "",
+     "img": "scrap_loc"
+    },
+    {
+     "t": "Vào Accounting → Reporting → Profit and Loss, mở Expense (mục Gross Profit), tìm tài khoản scrap, bấm ⋮ → General Ledger.",
+     "see": "Giá trị scrap hiện bên Nợ.",
+     "img": "scrap_pl"
+    }
+   ],
+   "effect": [
+    "Giảm giá trị tồn theo quy tắc giá như mọi nghiệp vụ xuất. Ghi vào Loss Account của địa điểm.",
+    "Lưu ý: trang scrap của tài liệu viết Perpetual ghi bút toán thời gian thực; điều này trái với cheat sheet bản 19 (Perpetual ghi ở hóa đơn). Nhiều khả năng trang scrap chưa cập nhật; tin theo cheat sheet."
+   ],
+   "check": [
+    "Tồn kho giảm đúng, scrap hiện trong Profit and Loss ở đúng tài khoản."
+   ],
+   "errors": [
+    "Scrap thành phẩm khi MO chưa Done → không cho.",
+    "Loss Account trống → scrap không vào đúng tài khoản chi phí."
+   ],
+   "vd": "Công ty A: tách hao hụt trong định mức (đã có trong BoM) và hao hụt bất thường (scrap). Kiểm Loss Account trỏ đúng tài khoản chi phí.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/workflows/scrap_manufacturing.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/scrapped_inventory_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/cheat_sheet.html"
+   ]
+  },
+  {
+   "id": "C7",
+   "group": "c",
+   "lv": "ok",
+   "title": "Sản phẩm phụ (by-product)",
+   "who": "Người có quyền Manufacturing.",
+   "when": "Khi sản xuất còn lại sản phẩm phụ ngoài thành phẩm chính.",
+   "before": [
+    "Đã bật By-Products (SOP A3)."
+   ],
+   "flow": [
+    [
+     "BoM: tab By-products",
+     "x"
+    ],
+    [
+     "Chạy MO",
+     "x"
+    ],
+    [
+     "Produce All",
+     "k"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Manufacturing → Products → Bills of Materials, mở BoM. Tab By-products: Add a line.",
+     "see": "",
+     "img": "byp_tab"
+    },
+    {
+     "t": "Chọn By-product, nhập Quantity và Unit of Measure. Tuỳ chọn: Produced in Operation (công đoạn tạo ra sản phẩm phụ).",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Chạy lệnh sản xuất như SOP C3, bấm Produce All.",
+     "see": "Tồn kho cập nhật số lượng sản phẩm phụ và thành phẩm.",
+     "img": null
+    },
+    {
+     "t": "Bấm nút Product Moves trên MO.",
+     "see": "Mỗi sản phẩm phụ đi từ địa điểm Production ảo vào kho.",
+     "img": "byp_moves"
+    }
+   ],
+   "effect": [
+    "Tài liệu KHÔNG mô tả cách chia giá thành cho sản phẩm phụ. Báo cáo Production Analysis có thước đo By-Products Total Cost."
+   ],
+   "check": [
+    "Tồn sản phẩm phụ tăng đúng số lượng khai trong BoM."
+   ],
+   "errors": [
+    "Không thấy tab By-products → chưa bật By-Products (SOP A3)."
+   ],
+   "vd": "Công ty A nếu có sản phẩm phụ: cách chia giá thành chưa có trong tài liệu đọc được, hỏi người có quyền hoặc thử trên bản demo trước khi báo giá thành.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/workflows/byproducts.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/bill_configuration.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/reporting/production_analysis.html"
+   ]
+  },
+  {
+   "id": "D1",
+   "group": "d",
+   "lv": "ok",
+   "title": "Đóng kỳ kho: báo cáo Inventory Valuation và bút toán Stock Closing",
+   "who": "Kế toán có quyền Accounting.",
+   "when": "Cuối kỳ tài chính, hoặc khi báo cáo kế toán cần đồng bộ với tồn kho.",
+   "before": [
+    "Mọi nhận/giao hàng và hóa đơn của kỳ đã nhập.",
+    "Đã làm dồn tích nếu cần (SOP D2)."
+   ],
+   "flow": [
+    [
+     "Mở báo cáo",
+     "x"
+    ],
+    [
+     "As of",
+     "x"
+    ],
+    [
+     "Generate Entry",
+     "x"
+    ],
+    [
+     "Post",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Accounting → Review → Inventory Valuation.",
+     "see": "Các mục: Initial Balance · Stock Variation · Ending Stock (và Inventory Loss, Cost of Production nếu Periodic).",
+     "img": "val_acc"
+    },
+    {
+     "t": "Kiểm Stock Variation: chênh giữa giá trị đã ghi sổ và giá trị tồn trong app Inventory.",
+     "see": "Bấm vào mục để xem bút toán chi tiết (nút Initial Balance hiện các bút toán định giá kho).",
+     "img": null
+    },
+    {
+     "t": "Ngày mặc định là cuối kỳ tài chính. Muốn đổi: bấm As of và chọn ngày.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Bấm Generate Entry.",
+     "see": "Tạo bút toán Stock Closing nháp.",
+     "img": null
+    },
+    {
+     "t": "Xem bút toán nháp. Nếu đúng, bấm Post.",
+     "see": "Tài khoản Stock Valuation và Stock Variation được cập nhật trong sổ cái.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Đưa phần chênh giữa kho và sổ vào sổ cái. Trang tài liệu nói rõ: Ending Stock là giá trị kế toán sau khi bút toán đóng kỳ hoàn tất."
+   ],
+   "check": [
+    "Sau khi Post: tạo lại báo cáo cùng ngày, Stock Variation về 0 (suy luận từ cách báo cáo tính)."
+   ],
+   "errors": [
+    "Đóng kỳ trước khi nhập đủ hóa đơn và dồn tích → số đóng chưa đủ.",
+    "Đặt Periodic Valuation tự động (Daily/Monthly) nhưng vẫn tạo tay → trùng; xem lại SOP A2."
+   ],
+   "vd": "Công ty A (Perpetual): hỏi người có quyền Periodic Valuation đang là Manual hay tự động, và kỳ trước đã Post bút toán Stock Closing chưa.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/cheat_sheet.html"
+   ]
+  },
+  {
+   "id": "D2",
+   "group": "d",
+   "lv": "ok",
+   "title": "Bút toán dồn tích: nhận chưa có hóa đơn, giao chưa xuất hóa đơn…",
+   "who": "Kế toán có quyền Accounting.",
+   "when": "Cuối kỳ, khi thời điểm nhận/giao hàng khác thời điểm lập hóa đơn.",
+   "before": [
+    "Đã nhập hóa đơn và phiếu kho của kỳ."
+   ],
+   "flow": [
+    [
+     "Accounting → Review",
+     "x"
+    ],
+    [
+     "Chọn 1 trong 4 báo cáo",
+     "x"
+    ],
+    [
+     "Create Accrual Entries",
+     "t"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Vào Accounting → Review. Chọn một trong 4 báo cáo: Bill To Receive · Invoices To Be Issued · Billed Not Received · Invoiced Not Delivered.",
+     "see": "Bill To Receive: nhận hàng chưa có hóa đơn. Invoices To Be Issued: giao hàng chưa xuất hóa đơn. Billed Not Received: có hóa đơn chưa nhận hàng. Invoiced Not Delivered: đã xuất hóa đơn chưa giao hàng.",
+     "img": "val_accrual"
+    },
+    {
+     "t": "Bấm As of nếu cần đổi ngày.",
+     "see": "",
+     "img": null
+    },
+    {
+     "t": "Chọn các dòng liên quan, bấm Create Accrual Entries.",
+     "see": "Hiện cửa sổ Accrued Revenue/Expense Entry.",
+     "img": null
+    },
+    {
+     "t": "Đặt Accrual Account, kiểm Reversal Date, bấm Create Entry.",
+     "see": "Bút toán dồn tích được tạo (thường đảo lại sau kỳ).",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Với Anglo-Saxon + Perpetual, bút toán còn lấy giá trị từ tài khoản đệm Variation account và chuyển sang tài khoản phù hợp như Bill to Receive (GRNI) hoặc giá vốn."
+   ],
+   "check": [
+    "Bốn báo cáo không còn dòng tồn đọng chưa xử lý của kỳ."
+   ],
+   "errors": [
+    "Quên dồn tích → tồn kho trên sổ lệch so với kho, lệch kéo sang kỳ sau."
+   ],
+   "vd": "Công ty A: hàng NVL nhận cuối tháng chưa có hóa đơn là trường hợp phổ biến nhất của Bill To Receive.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/cheat_sheet.html"
+   ]
+  },
+  {
+   "id": "D3",
+   "group": "d",
+   "lv": "inf",
+   "title": "Thứ tự công việc cuối kỳ của kế toán giá thành (gợi ý, cần kế toán trưởng xác nhận)",
+   "who": "Kế toán giá thành.",
+   "when": "Mỗi cuối kỳ.",
+   "before": [
+    "Đã hiểu SOP B, C, D1, D2."
+   ],
+   "flow": [
+    [
+     "Hóa đơn + kiểm kê",
+     "x"
+    ],
+    [
+     "WIP",
+     "t"
+    ],
+    [
+     "Dồn tích",
+     "t"
+    ],
+    [
+     "Stock Closing",
+     "t"
+    ],
+    [
+     "Soát giá thành",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Bảo đảm mọi phiếu nhận, phiếu giao, hóa đơn mua, hóa đơn bán của kỳ đã nhập (SOP B1 đến B3). Xử lý kiểm kê nếu có (SOP B4). Landed cost đã Validate (SOP B5).",
+     "see": "Đủ chứng từ trước khi chốt.",
+     "img": null
+    },
+    {
+     "t": "Đăng bút toán WIP cho các lệnh sản xuất còn chạy dở; đảo bút toán WIP kỳ trước (SOP C5).",
+     "see": "Số dư WIP đúng.",
+     "img": null
+    },
+    {
+     "t": "Làm bút toán dồn tích từ 4 báo cáo Review (SOP D2).",
+     "see": "Bốn báo cáo sạch.",
+     "img": null
+    },
+    {
+     "t": "Tạo và Post bút toán Stock Closing từ Inventory Valuation (SOP D1).",
+     "see": "Stock Variation về 0.",
+     "img": null
+    },
+    {
+     "t": "Soát giá thành: MO Cost so với Real Cost của các lệnh Done trong kỳ (SOP C4) và Production Analysis; ghi nhận lệnh có chênh lớn.",
+     "see": "Danh sách lệnh cần giải thích.",
+     "img": null
+    },
+    {
+     "t": "Đối chiếu giá trị tồn kho trong Stock report với số dư các tài khoản tồn kho (theo TT200: 152, 153, 155, 156). Phần chênh không giải thích được: báo (SOP E1).",
+     "see": "Chênh lệch còn lại.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Thứ tự này là suy luận của người soạn từ các SOP trước (WIP trước, rồi dồn tích, rồi đóng kho). Tài liệu Odoo không quy định thứ tự cuối kỳ. Kế toán trưởng quyết định thứ tự thực tế."
+   ],
+   "check": [
+    "Mỗi bước có người làm và ngày hoàn tất ghi lại."
+   ],
+   "errors": [
+    "Đóng kho trước khi đăng WIP và dồn tích → phải làm lại."
+   ],
+   "vd": "Công ty A: đặt lịch cuối kỳ dựa trên thứ tự này, điều chỉnh theo quy định nội bộ.",
+   "src": []
+  },
+  {
+   "id": "E1",
+   "group": "e",
+   "lv": "ok",
+   "title": "Rà soát cấu hình định kỳ và báo lại cho người có quyền",
+   "who": "Kế toán giá thành (có quyền xem). Người có quyền cấu hình sửa.",
+   "when": "Mỗi quý, sau khi nâng cấp phiên bản, hoặc khi giá thành/tồn kho có số lạ.",
+   "before": [
+    "Đã đọc SOP A2, C2, C5.",
+    "Có bảng mapping tài khoản TT200 do kế toán trưởng duyệt."
+   ],
+   "flow": [
+    [
+     "Thu thập cấu hình",
+     "x"
+    ],
+    [
+     "So với kỳ vọng",
+     "x"
+    ],
+    [
+     "Lập danh sách phát hiện",
+     "x"
+    ],
+    [
+     "Báo lại",
+     "x"
+    ]
+   ],
+   "steps": [
+    {
+     "t": "Ghi lại cấu hình công ty: Accounting → Configuration → Settings → Inventory Valuation (chế độ, Periodic Valuation, phương pháp giá, tài khoản, Journal, WIP Account, WIP Overhead Account).",
+     "see": "Bảng cấu hình công ty.",
+     "img": null
+    },
+    {
+     "t": "Ghi lại từng nhóm sản phẩm: Costing Method, Inventory Valuation, tài khoản tồn kho, tài khoản giá vốn (Inventory → Configuration → Categories).",
+     "see": "Bảng nhóm hàng.",
+     "img": null
+    },
+    {
+     "t": "Ghi lại work center: Cost per hour, Expense Account. Kiểm Hourly Cost của nhân viên công đoạn.",
+     "see": "Bảng work center.",
+     "img": null
+    },
+    {
+     "t": "Ghi lại địa điểm Inventory Loss và Production: Loss Account, Cost of Production.",
+     "see": "Bảng địa điểm.",
+     "img": null
+    },
+    {
+     "t": "Kiểm cuối kỳ: Stock Variation ≠ 0 chưa đóng? Bốn báo cáo dồn tích còn dòng? WIP đã đảo chưa? Có ai dùng Adjust Valuation, có landed cost không?",
+     "see": "Danh sách việc kỳ này.",
+     "img": null
+    },
+    {
+     "t": "Mỗi phát hiện viết 5 ý: (1) màn hình/menu (2) trường và giá trị hiện tại (3) nên là gì và vì sao, kèm tên SOP/tài liệu (4) triệu chứng ở số liệu (5) mã tham chiếu: số lệnh sản xuất, mã sản phẩm, số bút toán. KHÔNG gửi số tiền thật hay tên khách/NCC ra ngoài công ty.",
+     "see": "Một phát hiện đủ để người có quyền xử lý mà không phải hỏi lại.",
+     "img": null
+    },
+    {
+     "t": "Gửi cho người có quyền cấu hình. Việc nào chưa chắc thì ghi «cần xác nhận».",
+     "see": "Danh sách báo lại.",
+     "img": null
+    }
+   ],
+   "effect": [
+    "Không đổi dữ liệu. Chỉ phát hiện và báo."
+   ],
+   "check": [
+    "Mỗi phát hiện có đủ 5 ý. Phát hiện đã được người có quyền xác nhận hoặc bác bỏ."
+   ],
+   "errors": [
+    "Màn hình thật khác tài liệu gốc → có thể do bên triển khai chỉnh thêm; ghi lại chỗ khác để hỏi, không kết luận đúng/sai."
+   ],
+   "vd": "Công ty A: lưu bản ghi cấu hình mỗi quý để so sánh quý sau, phát hiện thay đổi không báo.",
+   "src": [
+    "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/work_in_progress.html",
+    "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/advanced_configuration/using_work_centers.html"
+   ]
+  }
+ ]
+};
+</script>
+<script>
+(function(){
+  var D = window.SOP_DATA || {sops:[],groups:{},flow_legend:{},images:{}};
+  var $ = function(id){return document.getElementById(id)};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  var grpSel=$("grp");
+  Object.keys(D.groups).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=D.groups[k];grpSel.appendChild(o)});
+
+  var lg='<b>Cách đọc.</b> Mỗi SOP có: ai làm · khi nào · điều kiện trước · các bước đánh số (mỗi bước có «Thấy:» là kết quả phải thấy và ảnh nếu tài liệu có) · ảnh hưởng số liệu · cách kiểm · lỗi thường gặp.<div class="chips">Sơ đồ luồng: ';
+  Object.keys(D.flow_legend).forEach(function(k){lg+='<span class="chip '+k+'">'+esc(D.flow_legend[k])+'</span>'});
+  lg+='</div><p>Ảnh là ảnh chụp màn hình chính thức trong tài liệu Odoo 19.0 (dữ liệu demo của Odoo, không phải dữ liệu công ty). Các bước và ảnh lấy từ tài liệu gốc của Odoo S.A. (CC BY-SA 4.0), đã dịch và biên soạn lại. Màn hình công ty bạn có thể khác nếu bên triển khai chỉnh thêm. Nhãn ✅ = đối chiếu nguyên văn tài liệu gốc; 🔎 = suy luận của người soạn, tài liệu không nói thẳng.</p>';
+  $("legend").innerHTML=lg;
+
+  function li(arr){return '<ul class="pl">'+arr.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>'}
+  function sop(s){
+    var h='<details class="card" data-grp="'+esc(s.group)+'"><summary><span class="tag '+esc(s.lv)+'">'+(s.lv==="ok"?"✅ "+esc(s.id):"🔎 "+esc(s.id))+'</span><span>'+esc(s.title)+'</span></summary><div class="in">';
+    h+='<div class="meta"><p><b>Ai làm:</b> '+esc(s.who)+'</p><p><b>Khi nào:</b> '+esc(s.when)+'</p></div>';
+    if(s.before && s.before.length) h+='<h4>Trước khi làm</h4>'+li(s.before);
+    if(s.flow && s.flow.length){h+='<div class="chips">'+s.flow.map(function(f,i){return (i?'<span class="arrow">→</span>':'')+'<span class="chip '+esc(f[1])+'">'+esc(f[0])+'</span>'}).join("")+'</div>'}
+    h+='<h4>Các bước</h4><ol class="steps">';
+    s.steps.forEach(function(st){
+      h+='<li><div>'+esc(st.t)+'</div>';
+      if(st.see) h+='<div class="see">Thấy: '+esc(st.see)+'</div>';
+      if(st.img){ h+='<figure><a href="img/'+esc(st.img)+'.png" target="_blank" rel="noopener"><img loading="lazy" src="img/'+esc(st.img)+'.png" alt="'+esc(D.images[st.img]||"")+'"></a><figcaption>'+esc(D.images[st.img]||"")+' — ảnh tài liệu Odoo 19.0 (bấm vào ảnh để xem to)</figcaption></figure>'; }
+      h+='</li>';
+    });
+    h+='</ol>';
+    if(s.effect && s.effect.length) h+='<h4>Ảnh hưởng số liệu / bút toán</h4>'+li(s.effect);
+    if(s.check && s.check.length) h+='<h4>Cách kiểm sau khi làm</h4>'+li(s.check);
+    if(s.errors && s.errors.length) h+='<h4>Lỗi thường gặp và việc cần báo</h4>'+li(s.errors);
+    if(s.vd) h+='<div class="vd"><b>Ví dụ công ty A:</b> '+esc(s.vd)+'</div>';
+    if(s.src && s.src.length){h+='<p class="src">Nguồn: '+s.src.map(function(u){return '<a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(u.replace(/^https:\/\/www\.odoo\.com\/documentation\/19\.0\/applications\//,""))+'</a>'}).join(" · ")+'</p>'}
+    return h+'</div></details>';
+  }
+  var html="", last="";
+  D.sops.forEach(function(s){
+    if(s.group!==last){html+='<h2 class="cat" data-grph="'+esc(s.group)+'">'+esc(D.groups[s.group]||s.group)+'</h2>';last=s.group}
+    html+=sop(s);
+  });
+  $("list").innerHTML=html+'<div class="empty hide" id="none">Không có SOP nào khớp.</div>';
+  var cards=[].slice.call(document.querySelectorAll("details.card"));
+  var heads=[].slice.call(document.querySelectorAll("h2.cat"));
+  var text=cards.map(function(el){return el.textContent.toLowerCase()});
+  function apply(){
+    var q=$("q").value.trim().toLowerCase(), g=grpSel.value, shown=0, per={};
+    cards.forEach(function(el,i){
+      var ok=(g==="all"||el.dataset.grp===g)&&(!q||text[i].indexOf(q)>=0);
+      el.classList.toggle("hide",!ok); if(ok){shown++;per[el.dataset.grp]=1}
+    });
+    heads.forEach(function(h){h.classList.toggle("hide",!per[h.dataset.grph])});
+    $("none").classList.toggle("hide",shown>0);
+    grpSel.classList.toggle("on",g!=="all");
+    $("count").textContent=shown+" / "+cards.length+" SOP";
+  }
+  $("q").addEventListener("input",apply); grpSel.addEventListener("change",apply);
+  $("fold").addEventListener("click",function(){cards.forEach(function(el){el.open=false})});
+  $("unfold").addEventListener("click",function(){cards.forEach(function(el){if(!el.classList.contains("hide"))el.open=true})});
+  apply();
+})();
+</script>
+</body>
+</html>

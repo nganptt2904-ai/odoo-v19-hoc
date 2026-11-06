@@ -15,6 +15,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,"Se
 header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px}
 h1{margin:0;font-size:1.15rem;color:var(--brand)}
 .sub2{color:var(--mut);font-size:.85rem;margin:2px 0 8px}
+.nav{display:flex;gap:6px;margin:6px 0 8px;flex-wrap:wrap}
+.nav a{padding:5px 12px;border:1px solid var(--line);border-radius:99px;color:var(--ink);text-decoration:none;font-size:.9rem}
+.nav a.cur{background:var(--brand);color:var(--bg);border-color:var(--brand)}
 .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .bar input,.bar select,.bar button{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
 .bar input{flex:1 1 220px;min-width:160px}
@@ -44,6 +47,7 @@ details.card[open]>summary::before{content:"▾"}
 <body>
 <header>
   <h1>Odoo V19 — Tồn kho · Sản xuất · Kế toán · Giá thành</h1>
+  <nav class="nav"><a href="index.html" class="cur">Thẻ tra nhanh</a><a href="sop.html">SOP từng bước (có ảnh)</a></nav>
   <div class="sub2" id="count"></div>
   <div class="bar">
     <input type="search" id="q" placeholder="Tìm (VD: FIFO, WIP, Real Cost…)" aria-label="Tìm">
