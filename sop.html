@@ -189,7 +189,7 @@ window.SOP_DATA = {
     }
    ],
    "effect": [
-    "Không có bút toán. Cấu hình này quyết định mỗi nghiệp vụ sinh ra bao nhiêu phiếu kho."
+    "(suy luận) Cấu hình này không tạo bút toán; nó quyết định mỗi nghiệp vụ sinh ra bao nhiêu phiếu kho."
    ],
    "check": [
     "Tạo thử một đơn mua nhỏ trên bản demo, xác nhận, xem nút Receipt sinh ra đúng một phiếu WH/IN."
@@ -209,7 +209,7 @@ window.SOP_DATA = {
    "group": "a",
    "lv": "ok",
    "title": "Cấu hình chế độ định giá, phương pháp giá và tài khoản",
-   "who": "Người có quyền cấu hình kế toán. Người làm giá thành dùng SOP này để KIỂM và báo, không tự sửa.",
+   "who": "Người có quyền cấu hình kế toán. Người làm giá thành dùng SOP này để kiểm tra cấu hình đang đặt.",
    "when": "Khi dựng kế toán kho, hoặc khi rà soát cấu hình (xem SOP E1).",
    "before": [
     "Đã cài Inventory và Accounting. Đã có bảng tài khoản (chart of accounts) của công ty."
@@ -282,7 +282,7 @@ window.SOP_DATA = {
     "Với mỗi nhóm hàng: ghi lại Costing Method, Inventory Valuation, tài khoản tồn kho, tài khoản giá vốn; đối chiếu bảng mapping TT200 do kế toán trưởng duyệt."
    ],
    "errors": [
-    "Nhóm hàng để Costing Method khác công ty → cùng loại hàng tính giá kiểu khác nhau.",
+    "(suy luận) Nhóm hàng để Costing Method khác công ty → cùng loại hàng tính giá kiểu khác nhau.",
     "Tài liệu đã đọc không nói hậu quả của việc đổi phương pháp giá khi đã có tồn kho (chưa xác minh) → hỏi bên triển khai trước khi đổi."
    ],
    "vd": "Công ty A: Perpetual (at invoicing), FIFO. Cần ghi lại mỗi nhóm NVL, bán thành phẩm, thành phẩm, hàng hóa trỏ tài khoản nào.",
@@ -334,7 +334,7 @@ window.SOP_DATA = {
     }
    ],
    "effect": [
-    "Không có bút toán. Mở khóa các màn hình dùng ở SOP B5, C1, C6."
+    "(suy luận) Bật tính năng không tạo bút toán; nó mở các màn hình dùng ở SOP B5, C1, C7."
    ],
    "check": [
     "Mở một BoM bất kỳ: thấy tab Operations và By-products. Mở menu Inventory → Operations: thấy Landed Costs."
@@ -391,8 +391,8 @@ window.SOP_DATA = {
      "img": "po_new"
     },
     {
-     "t": "Tab Products: bấm Add a product, chọn sản phẩm, nhập số lượng và giá.",
-     "see": "Giá trên dòng này là giá dùng định giá hàng nhận (xem phần Ảnh hưởng số liệu).",
+     "t": "Tab Products: bấm Add a product, chọn sản phẩm. Số lượng và giá điền trên dòng sản phẩm theo form.",
+     "see": "Giá trên dòng đơn mua là giá dùng định giá hàng nhận (xem phần Ảnh hưởng số liệu).",
      "img": null
     },
     {
@@ -418,7 +418,7 @@ window.SOP_DATA = {
    ],
    "effect": [
     "Kho: giá trị tăng = số lượng × đơn giá trên dòng đơn mua (quy đổi tiền tệ công ty). Không có đơn mua thì dùng giá hiện tại (Cost) của sản phẩm.",
-    "Kế toán (Perpetual): CHƯA ghi bút toán khi nhận hàng. Giá trị vào sổ khi hóa đơn mua được ghi (SOP B2) hoặc khi đóng kỳ (SOP D1).",
+    "Kế toán (Perpetual): CHƯA ghi bút toán khi nhận hàng. Giá trị vào sổ khi hóa đơn mua được ghi (SOP B2) hoặc khi đóng kỳ (SOP D1) (theo cheat sheet; kiểm kê, hao hụt và lệnh sản xuất ghi ngay — xem SOP B4, C3, C6).",
     "FIFO: lô vừa nhận giữ giá riêng của nó."
    ],
    "check": [
@@ -470,7 +470,7 @@ window.SOP_DATA = {
      "img": null
     },
     {
-     "t": "Điền Vendor, Bill Reference (số hóa đơn của NCC), Bill Date, Accounting Date (nếu cần), Payment Terms hoặc Due Date, Journal.",
+     "t": "Điền Vendor, Bill Reference (theo tài liệu: mã tham chiếu đơn bán do NCC cung cấp, dùng để khớp hàng khi nhận), Bill Date, Accounting Date (nếu cần), Payment Terms hoặc Due Date, Journal.",
      "see": "Odoo tự điền một số ô theo hồ sơ NCC và các đơn/hóa đơn trước.",
      "img": null
     },
@@ -501,7 +501,7 @@ window.SOP_DATA = {
    ],
    "errors": [
     "Quên nhận hàng trước → Purchase Matching không hiện dòng.",
-    "Nhập sai Bill Reference → khó đối chiếu sau."
+    "(suy luận) Nhập sai Bill Reference → khó đối chiếu sau."
    ],
    "vd": "Công ty A (Perpetual): giữa lúc nhận hàng và lúc ghi bill, giá trị kho đã tăng nhưng sổ chưa; chênh đó xử lý ở bút toán dồn tích (SOP D2).",
    "src": [
@@ -576,7 +576,7 @@ window.SOP_DATA = {
    ],
    "effect": [
     "Kho: giá trị giảm theo phương pháp giá. FIFO: lấy theo lô nhập cũ nhất còn tồn.",
-    "Kế toán (Anglo-Saxon + Perpetual): giá vốn (COGS) ghi khi hóa đơn bán được ghi sổ, không ghi lúc giao hàng.",
+    "Kế toán (Anglo-Saxon + Perpetual): giá vốn (COGS) ghi khi hóa đơn bán được ghi sổ, không ghi lúc giao hàng (theo trang kế toán và cheat sheet).",
     "Hàng đã giao chưa xuất hóa đơn: nằm ở báo cáo Invoices To Be Issued (SOP D2)."
    ],
    "check": [
@@ -633,13 +633,13 @@ window.SOP_DATA = {
      "img": "cnt_diff"
     },
     {
-     "t": "Áp dụng: bấm nút Apply ở cuối dòng (một dòng), hoặc Apply All, hoặc tick các dòng rồi bấm Apply ở đầu trang.",
-     "see": "Hiện cửa sổ Physical Inventory.",
+     "t": "Áp dụng. Một dòng, công ty không cần ghi lý do: bấm nút Apply ở cuối dòng. Nhiều dòng hoặc cần ghi lý do: bấm Apply All ở góc trên, hoặc tick các dòng rồi bấm Apply ở đầu trang.",
+     "see": "Với Apply một dòng, tài liệu không nêu cửa sổ lý do. Với nhiều dòng hoặc Apply All, hiện cửa sổ Physical Inventory.",
      "img": null
     },
     {
-     "t": "Trong cửa sổ, kiểm Inventory Reason (mặc định Physical Inventory, sửa nếu cần) và Counting Date, rồi bấm Update Quantities.",
-     "see": "Tồn kho được cập nhật. Odoo tạo bản ghi dịch chuyển trong Moves History để truy vết.",
+     "t": "Trong cửa sổ (nếu hiện), kiểm Inventory Reason (mặc định Physical Inventory, sửa nếu cần) và Counting Date, rồi bấm Update Quantities.",
+     "see": "Tồn kho được cập nhật. Odoo tạo bản ghi dịch chuyển trong Moves History để truy vết. Nếu giữa lúc đếm và lúc áp tồn đã đổi vì có dịch chuyển khác, Odoo hỏi xác nhận trước khi áp.",
      "img": "cnt_apply"
     },
     {
@@ -651,7 +651,8 @@ window.SOP_DATA = {
    "effect": [
     "Dịch chuyển đi từ/đến địa điểm ảo Inventory adjustment (ngoài kho) nên đổi cả số lượng và giá trị tồn.",
     "Đơn giá dùng là giá bình quân hiện tại (trường Cost của sản phẩm), kể cả khi nhóm dùng FIFO.",
-    "Tài khoản ghi chênh lệch: Loss Account của địa điểm loại Inventory Loss (SOP A2)."
+    "Tài khoản ghi chênh lệch: Loss Account của địa điểm loại Inventory Loss (SOP A2).",
+    "Anglo-Saxon + Perpetual: tài khoản định giá cập nhật ngay khi dịch chuyển điều chỉnh hoàn tất (trang kế toán, mục Inventory Loss)."
    ],
    "check": [
     "Cột Difference về 0 sau khi Apply.",
@@ -760,7 +761,7 @@ window.SOP_DATA = {
    "group": "b",
    "lv": "ok",
    "title": "Xem tồn kho và giá trị tồn; sửa giá trị lô",
-   "who": "Người dùng có quyền xem báo cáo Inventory.",
+   "who": "Người dùng xem được báo cáo Inventory.",
    "when": "Đối chiếu tồn, xem giá từng lô FIFO, hoặc tìm lý do giá trị lệch.",
    "before": [
     "Hàng đã có dịch chuyển kho."
@@ -881,19 +882,20 @@ window.SOP_DATA = {
     },
     {
      "t": "Tab Miscellaneous: xem Flexible Consumption (Blocked / Allowed / Allowed with Warning), Manufacturing Readiness, Analytic Distribution.",
-     "see": "Flexible Consumption quyết định có cho dùng NVL khác định mức không. Analytic Distribution cho phép ghi tự động chi phí sản xuất theo mô hình phân bổ phân tích đã tạo.",
+     "see": "Flexible Consumption quyết định có cho dùng NVL khác định mức không. Analytic Distribution: chọn các mô hình phân bổ phân tích đã tạo để chi phí sản xuất được ghi tự động vào nhật ký đã chọn (theo mô tả của tài liệu BoM).",
      "img": "bom_misc"
     }
    ],
    "effect": [
-    "Không có bút toán. BoM là cơ sở tính MO Cost (chi phí dự kiến) của lệnh sản xuất."
+    "(suy luận) Lưu BoM không tạo bút toán. Theo tài liệu, BoM là cơ sở tính MO Cost (chi phí dự kiến) của lệnh sản xuất."
    ],
    "check": [
     "MO Cost của lệnh mới tạo từ BoM này khớp với tay tính: NVL + công đoạn (SOP C4)."
    ],
    "errors": [
-    "Quên đặt Work Center cho công đoạn → công đoạn không có chi phí giờ.",
-    "BoM không có Operations → MO Cost chỉ có NVL, không có nhân công/máy."
+    "Work center là bắt buộc khi khai công đoạn trong tab Operations (tài liệu work center).",
+    "(suy luận) Work center chưa có Cost per hour → công đoạn có thời lượng nhưng chi phí công đoạn bằng 0.",
+    "(suy luận) BoM không có Operations → MO Cost chỉ có NVL, không có nhân công/máy."
    ],
    "vd": "Công ty A: kiểm xem mỗi BoM đã khai đủ công đoạn chưa. BoM chỉ có NVL cho giá thành thấp hơn thực tế.",
    "src": [
@@ -960,8 +962,9 @@ window.SOP_DATA = {
     "Nhân viên làm công đoạn có Hourly Cost."
    ],
    "errors": [
-    "Expense Account để trống → chi phí đi theo tài khoản chi phí của thành phẩm (suy luận: có thể dồn vào giá vốn, không tách nhân công/chung theo TT200).",
-    "Hourly Cost trống → Real Cost thiếu nhân công."
+    "Expense Account để trống → dùng tài khoản chi phí của thành phẩm (nguyên văn tài liệu).",
+    "(suy luận) Khi đó chi phí có thể dồn vào giá vốn, không tách nhân công / sản xuất chung như TT200.",
+    "(suy luận) Hourly Cost trống → Real Cost thiếu phần nhân công."
    ],
    "vd": "Công ty A: rà từng work center xem Cost per hour và Expense Account; báo những work center để trống.",
    "src": [
@@ -1015,7 +1018,7 @@ window.SOP_DATA = {
     },
     {
      "t": "Bấm Confirm.",
-     "see": "MO xác nhận, sẵn sàng làm.",
+     "see": "",
      "img": null
     },
     {
@@ -1106,7 +1109,7 @@ window.SOP_DATA = {
     },
     {
      "t": "Giá thành trung bình của sản phẩm: Inventory → Products → Products → mở sản phẩm → tab General Information → ô Cost.",
-     "see": "Cost là trung bình chi phí các MO đã hoàn thành. Ví dụ tài liệu: 65 (dự kiến) và MO đầu 70 → Cost 67,5.",
+     "see": "Cost là trung bình chi phí các MO đã hoàn thành. Ví dụ tài liệu: 65 (dự kiến) và MO đầu 70 → Cost 67,5. Nút Compute Price from BoM (chỉ hiện với sản phẩm có BoM) đặt Cost về giá dự kiến theo BoM nhưng không cố định: giá tiếp tục cập nhật theo các MO sau.",
      "img": null
     },
     {
@@ -1122,7 +1125,7 @@ window.SOP_DATA = {
     "Với lệnh mẫu: MO Cost = NVL + công đoạn. Real Cost khác thì có giải thích: lượng NVL, thời gian, giờ công, hoặc giá NVL đổi."
    ],
    "errors": [
-    "Real Cost không có phần công đoạn → BoM không có Operations hoặc work center chưa có chi phí giờ.",
+    "(suy luận) Real Cost không có phần công đoạn → BoM không có Operations hoặc work center chưa có chi phí giờ.",
     "Nhầm trường Cost (bình quân) với giá lô FIFO (xem SOP B6)."
    ],
    "vd": "Công ty A: lập bảng so sánh MO Cost và Real Cost mỗi tháng theo từng sản phẩm; chênh lớn kéo dài là dấu hiệu BoM hoặc work center cấu hình sai.",
@@ -1213,8 +1216,9 @@ window.SOP_DATA = {
     "Bút toán đảo đã được Confirm."
    ],
    "errors": [
-    "Quên đăng WIP cuối kỳ → giá trị dở dang không có trên sổ.",
-    "Quên Confirm bút toán đảo → WIP cộng dồn qua kỳ."
+    "Tài liệu nêu: bút toán WIP không tự gắn với tiến độ lệnh, phải đăng tay, và phải đảo khi quy trình xong.",
+    "Tài liệu nêu: nếu Balance Sheet không như mong đợi, kiểm lại ngày và bộ lọc ngày.",
+    "(suy luận) Quên đăng WIP cuối kỳ → giá trị dở dang không có trên sổ. Quên Confirm bút toán đảo → WIP có thể cộng dồn qua kỳ."
    ],
    "vd": "Công ty A: ghi lại ai đăng WIP cuối kỳ, đã đảo kỳ trước chưa, và WIP Account trỏ tài khoản nào.",
    "src": [
@@ -1284,14 +1288,14 @@ window.SOP_DATA = {
    ],
    "effect": [
     "Giảm giá trị tồn theo quy tắc giá như mọi nghiệp vụ xuất. Ghi vào Loss Account của địa điểm.",
-    "Lưu ý: trang scrap của tài liệu viết Perpetual ghi bút toán thời gian thực; điều này trái với cheat sheet bản 19 (Perpetual ghi ở hóa đơn). Nhiều khả năng trang scrap chưa cập nhật; tin theo cheat sheet."
+    "Anglo-Saxon + Perpetual: Inventory Loss cập nhật tài khoản định giá NGAY khi dịch chuyển hoàn tất (trang kế toán). Trang scrap viết rộng hơn về bút toán thời gian thực; hai trang chưa thống nhất hoàn toàn (xem thẻ q-02 ở trang tra nhanh)."
    ],
    "check": [
     "Tồn kho giảm đúng, scrap hiện trong Profit and Loss ở đúng tài khoản."
    ],
    "errors": [
     "Scrap thành phẩm khi MO chưa Done → không cho.",
-    "Loss Account trống → scrap không vào đúng tài khoản chi phí."
+    "(suy luận) Loss Account trống → scrap không vào đúng tài khoản chi phí."
    ],
    "vd": "Công ty A: tách hao hụt trong định mức (đã có trong BoM) và hao hụt bất thường (scrap). Kiểm Loss Account trỏ đúng tài khoản chi phí.",
    "src": [
@@ -1425,8 +1429,8 @@ window.SOP_DATA = {
     "Sau khi Post: tạo lại báo cáo cùng ngày, Stock Variation về 0 (suy luận từ cách báo cáo tính)."
    ],
    "errors": [
-    "Đóng kỳ trước khi nhập đủ hóa đơn và dồn tích → số đóng chưa đủ.",
-    "Đặt Periodic Valuation tự động (Daily/Monthly) nhưng vẫn tạo tay → trùng; xem lại SOP A2."
+    "(suy luận) Đóng kỳ trước khi nhập đủ hóa đơn và dồn tích → bút toán đóng chưa phản ánh hết.",
+    "Nếu Periodic Valuation đặt Daily/Monthly thì hệ thống tự tạo bút toán đóng; trước khi tạo tay, hỏi người có quyền cấu hình đang đặt chế độ nào (xem SOP A2)."
    ],
    "vd": "Công ty A (Perpetual): hỏi người có quyền Periodic Valuation đang là Manual hay tự động, và kỳ trước đã Post bút toán Stock Closing chưa.",
    "src": [
@@ -1461,7 +1465,7 @@ window.SOP_DATA = {
    "steps": [
     {
      "t": "Vào Accounting → Review. Chọn một trong 4 báo cáo: Bill To Receive · Invoices To Be Issued · Billed Not Received · Invoiced Not Delivered.",
-     "see": "Bill To Receive: nhận hàng chưa có hóa đơn. Invoices To Be Issued: giao hàng chưa xuất hóa đơn. Billed Not Received: có hóa đơn chưa nhận hàng. Invoiced Not Delivered: đã xuất hóa đơn chưa giao hàng.",
+     "see": "Tên 4 báo cáo theo tài liệu; ý nghĩa dưới đây suy từ tên (suy luận). Bill To Receive: nhận hàng chưa có hóa đơn. Invoices To Be Issued: giao hàng chưa xuất hóa đơn. Billed Not Received: có hóa đơn chưa nhận hàng. Invoiced Not Delivered: đã xuất hóa đơn chưa giao hàng.",
      "img": "val_accrual"
     },
     {
@@ -1476,18 +1480,18 @@ window.SOP_DATA = {
     },
     {
      "t": "Đặt Accrual Account, kiểm Reversal Date, bấm Create Entry.",
-     "see": "Bút toán dồn tích được tạo (thường đảo lại sau kỳ).",
+     "see": "Bút toán dồn tích được tạo theo Accrual Account và Reversal Date đã chọn.",
      "img": null
     }
    ],
    "effect": [
-    "Với Anglo-Saxon + Perpetual, bút toán còn lấy giá trị từ tài khoản đệm Variation account và chuyển sang tài khoản phù hợp như Bill to Receive (GRNI) hoặc giá vốn."
+    "Với Anglo-Saxon + Perpetual, bút toán còn lấy giá trị từ tài khoản đệm Variation account và chuyển sang tài khoản phù hợp như Bill to Receive hoặc GRNI (theo tài liệu)."
    ],
    "check": [
     "Bốn báo cáo không còn dòng tồn đọng chưa xử lý của kỳ."
    ],
    "errors": [
-    "Quên dồn tích → tồn kho trên sổ lệch so với kho, lệch kéo sang kỳ sau."
+    "(suy luận) Quên dồn tích → tồn kho trên sổ lệch so với kho, lệch kéo sang kỳ sau."
    ],
    "vd": "Công ty A: hàng NVL nhận cuối tháng chưa có hóa đơn là trường hợp phổ biến nhất của Bill To Receive.",
    "src": [
@@ -1554,7 +1558,7 @@ window.SOP_DATA = {
      "img": null
     },
     {
-     "t": "Đối chiếu giá trị tồn kho trong Stock report với số dư các tài khoản tồn kho (theo TT200: 152, 153, 155, 156). Phần chênh không giải thích được: báo (SOP E1).",
+     "t": "Đối chiếu giá trị tồn kho trong Stock report với số dư các tài khoản tồn kho (theo TT200: 152, 153, 155, 156; không gồm 154 dở dang). Phần chênh không giải thích được: báo (SOP E1).",
      "see": "Chênh lệch còn lại.",
      "img": null
     }
@@ -1576,7 +1580,7 @@ window.SOP_DATA = {
    "group": "e",
    "lv": "ok",
    "title": "Rà soát cấu hình định kỳ và báo lại cho người có quyền",
-   "who": "Kế toán giá thành (có quyền xem). Người có quyền cấu hình sửa.",
+   "who": "Người rà soát (kế toán giá thành hoặc kế toán kho) và người phụ trách cấu hình hệ thống.",
    "when": "Mỗi quý, sau khi nâng cấp phiên bản, hoặc khi giá thành/tồn kho có số lạ.",
    "before": [
     "Đã đọc SOP A2, C2, C5.",
@@ -1666,7 +1670,7 @@ window.SOP_DATA = {
 
   var lg='<b>Cách đọc.</b> Mỗi SOP có: ai làm · khi nào · điều kiện trước · các bước đánh số (mỗi bước có «Thấy:» là kết quả phải thấy và ảnh nếu tài liệu có) · ảnh hưởng số liệu · cách kiểm · lỗi thường gặp.<div class="chips">Sơ đồ luồng: ';
   Object.keys(D.flow_legend).forEach(function(k){lg+='<span class="chip '+k+'">'+esc(D.flow_legend[k])+'</span>'});
-  lg+='</div><p>Ảnh là ảnh chụp màn hình chính thức trong tài liệu Odoo 19.0 (dữ liệu demo của Odoo, không phải dữ liệu công ty). Các bước và ảnh lấy từ tài liệu gốc của Odoo S.A. (CC BY-SA 4.0), đã dịch và biên soạn lại. Màn hình công ty bạn có thể khác nếu bên triển khai chỉnh thêm. Nhãn ✅ = đối chiếu nguyên văn tài liệu gốc; 🔎 = suy luận của người soạn, tài liệu không nói thẳng.</p>';
+  lg+='</div><p>Ảnh là ảnh chụp màn hình chính thức trong tài liệu Odoo 19.0 (dữ liệu demo của Odoo, không phải dữ liệu công ty). Các bước và ảnh lấy từ tài liệu gốc của Odoo S.A. (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="color:var(--acc)">CC BY-SA 4.0</a>), đã dịch và biên soạn lại; trang này chia sẻ theo cùng giấy phép. Màn hình công ty bạn có thể khác nếu bên triển khai chỉnh thêm. Nhãn ✅ = các bước đã đối chiếu nguyên văn tài liệu gốc; 🔎 = suy luận của người soạn. Trong SOP ✅, câu mở đầu bằng «(suy luận)» là ý của người soạn, tài liệu không nói thẳng; các câu khác được soạn từ tài liệu và đã được soát lại, nhưng không thể cam đoan từng câu đều có nguyên văn tương ứng.</p>';
   $("legend").innerHTML=lg;
 
   function li(arr){return '<ul class="pl">'+arr.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>'}
@@ -1698,12 +1702,15 @@ window.SOP_DATA = {
   $("list").innerHTML=html+'<div class="empty hide" id="none">Không có SOP nào khớp.</div>';
   var cards=[].slice.call(document.querySelectorAll("details.card"));
   var heads=[].slice.call(document.querySelectorAll("h2.cat"));
-  var text=cards.map(function(el){return el.textContent.toLowerCase()});
+  function norm(s){return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d")}
+  var text=cards.map(function(el){return norm(el.querySelector("summary span:last-child").textContent+" "+el.querySelector(".in").textContent)});
   function apply(){
-    var q=$("q").value.trim().toLowerCase(), g=grpSel.value, shown=0, per={};
+    var q=norm($("q").value.trim()), g=grpSel.value, shown=0, per={};
+    var oks=cards.map(function(el,i){return (g==="all"||el.dataset.grp===g)&&(!q||text[i].indexOf(q)>=0)});
+    var nok=oks.filter(Boolean).length;
     cards.forEach(function(el,i){
-      var ok=(g==="all"||el.dataset.grp===g)&&(!q||text[i].indexOf(q)>=0);
-      el.classList.toggle("hide",!ok); if(ok){shown++;per[el.dataset.grp]=1}
+      var ok=oks[i];
+      el.classList.toggle("hide",!ok); if(q.length>=3&&ok&&nok<=6)el.open=true; if(ok){shown++;per[el.dataset.grp]=1}
     });
     heads.forEach(function(h){h.classList.toggle("hide",!per[h.dataset.grph])});
     $("none").classList.toggle("hide",shown>0);

@@ -59,7 +59,7 @@ details.card[open]>summary::before{content:"▾"}
 <main>
   <div class="legendbox" id="legend"></div>
   <div id="list"></div>
-  <p class="where" style="margin-top:28px">Nội dung phỏng theo tài liệu Odoo 19.0 của Odoo S.A. (<a href="https://github.com/odoo/documentation" target="_blank" rel="noopener" style="color:var(--acc)">github.com/odoo/documentation</a>), giấy phép CC BY-SA 4.0. Đã dịch sang tiếng Việt, tóm lược và thêm ghi chú; mỗi thẻ có liên kết tới trang gốc. Trang này chia sẻ theo cùng giấy phép CC BY-SA 4.0. Trang không do Odoo S.A. đưa ra.</p>
+  <p class="where" style="margin-top:28px">Nội dung phỏng theo tài liệu Odoo 19.0 của Odoo S.A. (<a href="https://github.com/odoo/documentation" target="_blank" rel="noopener" style="color:var(--acc)">github.com/odoo/documentation</a>), giấy phép <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="color:var(--acc)">CC BY-SA 4.0</a>. Đã dịch sang tiếng Việt, tóm lược và thêm ghi chú; mỗi thẻ có liên kết tới trang gốc. Trang này chia sẻ theo cùng giấy phép CC BY-SA 4.0. Trang không do Odoo S.A. đưa ra.</p>
 </main>
 <script>
 window.ODOO_DATA = {
@@ -74,10 +74,10 @@ window.ODOO_DATA = {
   "ok": "✅ đã đối chiếu nguyên văn tài liệu gốc Odoo 19.0",
   "tt": "📘 kiến thức kế toán TT200 (không phải Odoo), cần kế toán trưởng xác nhận",
   "inf": "🔎 suy luận, tài liệu không nói thẳng",
-  "chk": "☐ mục rà soát",
+  "chk": "☐ mục rà soát (phần «Triệu chứng» là suy luận của người soạn)",
   "q": "❓ chưa xác minh / mâu thuẫn"
  },
- "scenario": "Ví dụ công ty A: dùng Odoo 19 Enterprise, định giá FIFO, hạch toán tự động (Perpetual), chuẩn kế toán TT200; người làm kế toán giá thành chỉ có quyền User (không vào được cấu hình) nhưng phải phát hiện cấu hình sai để báo lại.",
+ "scenario": "Ví dụ công ty A: dùng Odoo 19, định giá FIFO, hạch toán tự động (Perpetual), kế toán theo TT200. Trang dành cho người làm kế toán giá thành và kế toán kho cần hiểu cấu hình Odoo.",
  "cards": [
   {
    "id": "dg-01",
@@ -96,7 +96,7 @@ window.ODOO_DATA = {
    "cat": "dg",
    "lv": "ok",
    "title": "Odoo 19: Perpetual (at invoicing) và Periodic (at closing)",
-   "body": "Mục Inventory Valuation trong Settings có 2 lựa chọn:\n• Perpetual (at invoicing): hóa đơn mua ghi vào tài khoản tồn kho (stock valuation); chi phí giá vốn (COGS) ghi khi bán. Tài liệu gọi là cách tốt nhất ở các nước theo kế toán Anglo-Saxon.\n• Periodic (at closing): hóa đơn mua ghi thẳng vào chi phí; giá trị tồn kho vào sổ qua bút toán đóng kỳ (stock variation). Tài liệu gọi là cách tốt nhất ở châu Âu.\nThay đổi ở bản 19 (nguyên văn): trước bản 19, Perpetual ghi bút toán thời gian thực ở TỪNG dịch chuyển kho → quá nhiều dòng bút toán. Từ bản 19, Perpetual tác động vào tài khoản tồn kho ở mức HÓA ĐƠN; bút toán đóng kỳ xử lý hàng chưa có hóa đơn, doanh thu hoãn, chi phí trả trước và các chênh lệch khác giữa kho và sổ.\nBảng 18 → 19: Periodic Anglo-Saxon trước «không hỗ trợ», nay «hỗ trợ đầy đủ»; Perpetual: «hóa đơn + mọi dịch chuyển» → «hóa đơn + một bút toán đóng kỳ»; thêm Invoices to issue, Prepaid expenses, Bills to receive, Deferred revenues.",
+   "body": "Mục Inventory Valuation trong Settings có 2 lựa chọn:\n• Perpetual (at invoicing): hóa đơn mua ghi vào tài khoản tồn kho (stock valuation); chi phí giá vốn (COGS) ghi khi bán. Tài liệu gọi là cách tốt nhất ở các nước theo kế toán Anglo-Saxon.\n• Periodic (at closing): hóa đơn mua ghi thẳng vào chi phí; giá trị tồn kho vào sổ qua bút toán đóng kỳ (stock variation). Tài liệu gọi là cách tốt nhất ở châu Âu.\nThay đổi ở bản 19 (nguyên văn): trước bản 19, Perpetual ghi bút toán thời gian thực ở TỪNG dịch chuyển kho → quá nhiều dòng bút toán. Từ bản 19, Perpetual tác động vào tài khoản tồn kho ở mức HÓA ĐƠN; bút toán đóng kỳ xử lý hàng chưa có hóa đơn, doanh thu hoãn, chi phí trả trước và các chênh lệch khác giữa kho và sổ.\nLưu ý: «ở mức hóa đơn» áp cho nhận mua và bán hàng. Với Anglo-Saxon + Perpetual, kiểm kê / hao hụt (Inventory Loss) và lệnh sản xuất được validate cập nhật tài khoản định giá ngay (trang kế toán) — xem thẻ q-02.\nBảng 18 → 19: Periodic Anglo-Saxon trước «không hỗ trợ», nay «hỗ trợ đầy đủ»; Perpetual: «hóa đơn + mọi dịch chuyển» → «hóa đơn + một bút toán đóng kỳ»; thêm Invoices to issue, Prepaid expenses, Bills to receive, Deferred revenues.",
    "vd": "«Hạch toán tự động» ở công ty A tương ứng Perpetual (at invoicing). Nếu công ty nâng cấp từ bản 18 lên 19 thì có thể còn dấu vết cấu hình cũ. Cần hỏi người có quyền: ô Inventory Valuation đang chọn gì, và công ty có nâng cấp từ 18 không.",
    "where": "Accounting → Configuration → Settings → Inventory Valuation",
    "src": [
@@ -109,7 +109,7 @@ window.ODOO_DATA = {
    "cat": "dg",
    "lv": "ok",
    "title": "Ai cập nhật gì, vào lúc nào",
-   "body": "Bảng của tài liệu (Accounting / Inventory):\n• Purchase Order: không bên nào ghi.\n• Receipt (nhận hàng): chỉ KHO cập nhật.\n• Vendor Bill: chỉ KẾ TOÁN ghi.\n• Sales Order: không bên nào ghi.\n• Customer Invoice: chỉ KẾ TOÁN ghi.\n• Delivery (giao hàng): chỉ KHO cập nhật.\n• Closing Entry: chỉ KẾ TOÁN.\nNguyên văn (Perpetual): «goods receipts are not directly posted in the accounting». Giá trị tồn kho trong sổ được cập nhật khi hóa đơn/vendor bill được ghi, HOẶC khi tạo bút toán từ báo cáo Inventory Valuation lúc đóng kỳ. Lý do tài liệu nêu: kế toán không thể ghi bút toán cho từng dịch chuyển kho nên ghi bút toán đóng kỳ cho phần chênh giữa «đã lập hóa đơn» và «đã nhận/giao». Đóng kỳ thường 1 lần/năm với doanh nghiệp nhỏ, 1 lần/tháng với doanh nghiệp lớn.",
+   "body": "Bảng của tài liệu (Accounting / Inventory):\n• Purchase Order: không bên nào ghi.\n• Receipt (nhận hàng): chỉ KHO cập nhật.\n• Vendor Bill: chỉ KẾ TOÁN ghi.\n• Sales Order: không bên nào ghi.\n• Customer Invoice: chỉ KẾ TOÁN ghi.\n• Delivery (giao hàng): chỉ KHO cập nhật.\n• Closing Entry: chỉ KẾ TOÁN.\nNguyên văn (Perpetual): «goods receipts are not directly posted in the accounting». Giá trị tồn kho trong sổ được cập nhật khi hóa đơn/vendor bill được ghi, HOẶC khi tạo bút toán từ báo cáo Inventory Valuation lúc đóng kỳ. Lý do tài liệu nêu: kế toán không thể ghi bút toán cho từng dịch chuyển kho nên ghi bút toán đóng kỳ cho phần chênh giữa «đã lập hóa đơn» và «đã nhận/giao». Đóng kỳ thường 1 lần/năm với doanh nghiệp nhỏ, 1 lần/tháng với doanh nghiệp lớn.\nLưu ý: bảng trên là mô tả chung của cheat sheet. Với Anglo-Saxon + Perpetual, trang kế toán nói kiểm kê / hao hụt (Inventory Loss) và lệnh sản xuất được validate cập nhật tài khoản định giá ngay — xem thẻ dg-02 và q-02.",
    "vd": "Số trên báo cáo kho và số dư tài khoản tồn kho có thể lệch tạm thời (hàng đã nhận chưa có hóa đơn, hàng đã giao chưa xuất hóa đơn). Lệch kiểu này không nhất thiết là lỗi; cần xem cuối kỳ đã có bút toán dồn tích và bút toán đóng kho chưa.",
    "where": "",
    "src": [
@@ -185,7 +185,7 @@ window.ODOO_DATA = {
    "lv": "ok",
    "title": "Báo cáo để đối chiếu kho với sổ",
    "body": "• Inventory → Reporting → Stock: số lượng tồn, Unit Cost, Total Value; có tuỳ chọn Inventory at Date để xem tại ngày trước. Mặc định tính cho cả công ty; muốn xem theo kho thì lọc Warehouses ở thanh bên.\n• Moves Analysis: từng dịch chuyển với Value, Remaining Quantity, Remaining Value; chia Value cho số lượng ra đơn giá đã áp dụng.\n• Accounting → Review → Inventory Valuation: Initial Balance (giá trị tồn đang ghi sổ) · Inventory Loss và Cost of Production (CHỈ với Periodic) · Stock Variation (chênh giữa giá trị đã ghi sổ và giá trị tồn trong app Inventory) · Ending Stock (giá trị sau khi đóng kỳ xong). Nút As of chọn ngày; nút Generate Entry tạo bút toán Stock Closing nháp, xem rồi bấm Post.",
-   "vd": "Dòng Stock Variation khác 0 = có chênh giữa sổ và kho; chưa chắc là lỗi (xem thẻ «Ai cập nhật gì»). Người dùng chỉ có quyền User có thể không thấy một số báo cáo; khi đó nhờ người có quyền chụp màn hình và che số.",
+   "vd": "Dòng Stock Variation khác 0 = có chênh giữa sổ và kho; chưa chắc là lỗi (xem thẻ «Ai cập nhật gì»). Một số báo cáo có thể không hiện với mọi người dùng; khi đó nhờ người phụ trách chụp màn hình và che số.",
    "where": "Menu như trên",
    "src": [
     "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html",
@@ -261,7 +261,7 @@ window.ODOO_DATA = {
    "lv": "ok",
    "title": "Chi phí giờ: work center và nhân viên",
    "body": "• Work center: ô per workcenter = chi phí vận hành 1 giờ của trạm; ô per employee = chi phí giờ mỗi nhân viên làm tại trạm. Ô per employee CHỈ dùng tính MO Cost (dự kiến).\n• Real Cost nhân công dùng Hourly Cost trong hồ sơ nhân viên (app Employees → tab Settings → Application Settings).\n• Ví dụ tài liệu: per employee của work center = 50/giờ, nhân viên làm có Hourly Cost 60/giờ → MO Cost tính 50, Real Cost tính 60.\n• Chi phí công đoạn = chi phí giờ của work center × thời lượng. Thời lượng mặc định tính tay (Set duration manually) hoặc tính từ thời gian đã theo dõi (Compute based on tracked time).\n• Giá thành phần (component cost) = giá mua bình quân qua mọi đơn mua; nhập tay thì đơn mua sau ghi đè lại giá tự tính.",
-   "vd": "Nếu Hourly Cost của nhân viên để trống hoặc sai, Real Cost nhân công sai theo. Người làm giá thành thấy Real Cost bất thường nhưng không tự sửa được → báo.",
+   "vd": "Nếu Hourly Cost của nhân viên để trống hoặc sai, Real Cost nhân công sai theo. Thấy Real Cost nhân công bất thường thì kiểm Hourly Cost của nhân viên làm công đoạn đó.",
    "where": "Manufacturing → Configuration → Work Centers · Employees → hồ sơ → Settings → Hourly Cost",
    "src": [
     "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/manufacturing/basic_setup/mo_costs.html",
@@ -398,7 +398,7 @@ window.ODOO_DATA = {
    "title": "☐ Tài khoản tồn kho theo nhóm hàng (đối chiếu TT200)",
    "body": "Mỗi nhóm hàng phải trỏ tài khoản đúng bản chất. Theo TT200 (kiến thức kế toán, không phải Odoo): 152 nguyên liệu, vật liệu · 153 công cụ, dụng cụ · 154 chi phí sản xuất, kinh doanh dở dang · 155 thành phẩm · 156 hàng hóa · 632 giá vốn hàng bán · 621 / 622 / 627 chi phí nguyên vật liệu trực tiếp / nhân công trực tiếp / sản xuất chung.\nXem: Stock Account (Valuation) và Expense (COGS) của từng nhóm. Triệu chứng nếu sai: nguyên liệu và thành phẩm dồn vào một tài khoản; báo cáo tồn kho theo tài khoản không tách được.\nKế toán trưởng xác nhận danh mục mapping trước khi báo.",
    "vd": "",
-   "where": "Product Category → tab Accounting",
+   "where": "Product Category (vị trí tab chứa tài khoản chưa xác minh trong tài liệu)",
    "src": [
     "https://www.odoo.com/documentation/19.0/applications/inventory_and_mrp/inventory/inventory_valuation/cheat_sheet.html"
    ]
@@ -408,7 +408,7 @@ window.ODOO_DATA = {
    "cat": "chk",
    "lv": "chk",
    "title": "☐ Tài khoản WIP trong Settings",
-   "body": "Xem WIP Account và WIP Overhead Account. Mặc định của tài liệu là mã bảng tài khoản mẫu 110500 / 110400. Với TT200, WIP nên về nhóm 154. Còn mã mặc định hoặc trỏ tài khoản không phải 154 → báo.\nTriệu chứng: bút toán WIP rơi vào tài khoản lạ; số dư 154 không phản ánh dở dang.",
+   "body": "Xem WIP Account và WIP Overhead Account. Mặc định của tài liệu là mã bảng tài khoản mẫu 110500 / 110400, không phải TT200.\n• WIP Account (tài khoản theo dõi giá trị dở dang): với TT200, dự kiến thuộc nhóm 154 — kế toán trưởng xác nhận. Còn mã mặc định → báo.\n• WIP Overhead Account (tài khoản chi phí chung): tài liệu đặt tên mặc định là Cost of Production; trỏ vào tài khoản nào theo TT200 là quyết định của kế toán trưởng, không tự khẳng định.\nTriệu chứng (suy luận): bút toán WIP rơi vào tài khoản lạ; số dư dở dang không phản ánh đúng.",
    "vd": "",
    "where": "Accounting → Configuration → Settings → Inventory Valuation → Manufacturing",
    "src": [
@@ -469,7 +469,7 @@ window.ODOO_DATA = {
    "cat": "chk",
    "lv": "inf",
    "title": "☐ Đối chiếu số tổng: báo cáo kho và số dư tài khoản tồn kho",
-   "body": "Cùng một ngày: tổng giá trị trên Inventory → Reporting → Stock so với tổng số dư các tài khoản tồn kho (152 + 153 + 155 + 156, nếu mapping theo TT200). Chênh lệch giải thích được bằng hàng chưa có hóa đơn / chưa xuất hóa đơn; phần không giải thích được → báo.\nĐây là phép đối chiếu tổng quát suy ra từ cách Perpetual ghi nhận, không phải bước do tài liệu hướng dẫn.",
+   "body": "Cùng một ngày: tổng giá trị trên Inventory → Reporting → Stock so với tổng số dư các tài khoản tồn kho (152 + 153 + 155 + 156 nếu mapping theo TT200; không gồm 154 dở dang vì báo cáo kho không chứa WIP). Chênh lệch giải thích được bằng hàng chưa có hóa đơn / chưa xuất hóa đơn; phần không giải thích được → báo.\nĐây là phép đối chiếu tổng quát suy ra từ cách Perpetual ghi nhận, không phải bước do tài liệu hướng dẫn.",
    "vd": "",
    "where": "",
    "src": []
@@ -519,8 +519,8 @@ window.ODOO_DATA = {
    "id": "q-02",
    "cat": "q",
    "lv": "q",
-   "title": "Một chỗ tài liệu Odoo tự mâu thuẫn",
-   "body": "Trang «Account for scrapped goods» viết: đặt Inventory Valuation = Perpetual (at invoicing) «ensures that real-time journal entries are created in the Accounting app whenever stock enters or leaves the company's warehouse». Điều này trái với cheat sheet và trang Accounting bản 19 (Perpetual ghi ở mức hóa đơn, kho không ghi trực tiếp). Nhiều khả năng trang scrap chưa được cập nhật cho bản 19. Khi mâu thuẫn, dựa vào cheat sheet (mục Changes in Odoo 19) và trang kế toán.",
+   "title": "Thời điểm ghi sổ: tài liệu viết chưa thống nhất giữa các trang",
+   "body": "• Cheat sheet (bảng Inventory vs Accounting): nhận hàng và giao hàng chỉ do KHO cập nhật; kế toán ghi khi có hóa đơn hoặc đóng kỳ.\n• Trang kế toán: với Anglo-Saxon + Perpetual, kiểm kê / hao hụt (địa điểm Inventory Loss) cập nhật tài khoản định giá NGAY khi dịch chuyển hoàn tất; khi lệnh sản xuất được validate thì tài khoản định giá của thành phẩm và thành phần cập nhật, đối ứng là Cost of Production.\n• Trang «Account for scrapped goods» viết rộng hơn: Perpetual (at invoicing) «ensures that real-time journal entries are created in the Accounting app whenever stock enters or leaves the company's warehouse».\nCách ghép nhất quán (SUY LUẬN của người soạn, chưa kiểm trên bản chạy): nhận/giao hàng chờ hóa đơn hoặc đóng kỳ; kiểm kê, hao hụt và lệnh sản xuất ghi ngay. Câu của trang scrap nói quá rộng so với cheat sheet.",
    "vd": "",
    "where": "",
    "src": [
@@ -590,13 +590,16 @@ window.ODOO_DATA = {
   $("list").innerHTML=html+'<div class="empty hide" id="none">Không có thẻ nào khớp.</div>';
   var cards=[].slice.call(document.querySelectorAll("details.card"));
   var heads=[].slice.call(document.querySelectorAll("h2.cat"));
-  var text=cards.map(function(el){return el.textContent.toLowerCase()});
+  function norm(s){return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d")}
+  var text=cards.map(function(el){return norm(el.querySelector("summary span:last-child").textContent+" "+el.querySelector(".in").textContent)});
 
   function apply(){
-    var q=$("q").value.trim().toLowerCase(), cv=catSel.value, lv=lvSel.value, shown=0, perCat={};
+    var q=norm($("q").value.trim()), cv=catSel.value, lv=lvSel.value, shown=0, perCat={};
+    var oks=cards.map(function(el,i){return (cv==="all"||el.dataset.cat===cv)&&(lv==="all"||el.dataset.lv===lv)&&(!q||text[i].indexOf(q)>=0)});
+    var nok=oks.filter(Boolean).length;
     cards.forEach(function(el,i){
-      var ok=(cv==="all"||el.dataset.cat===cv)&&(lv==="all"||el.dataset.lv===lv)&&(!q||text[i].indexOf(q)>=0);
-      el.classList.toggle("hide",!ok);
+      var ok=oks[i];
+      el.classList.toggle("hide",!ok); if(q.length>=3&&ok&&nok<=6)el.open=true;
       if(ok){shown++;perCat[el.dataset.cat]=1}
     });
     heads.forEach(function(h){h.classList.toggle("hide",!perCat[h.dataset.cath])});
